@@ -1,0 +1,121 @@
+# ChronifyAI Plugin Structure (local_chronifyai)
+
+local/chronifyai/
+├── classes/
+│   ├── api/
+│   │   ├── auth.php                 # Token/authentication
+│   │   ├── client.php               # Main API client
+│   │   ├── request.php              # HTTP requests
+│   │   ├── endpoints.php            # API endpoint URLs
+│   │   ├── api_helper.php           # Helper utilities
+│   │   └── response_handler.php     # Response processing
+│   ├── export/                      # Data export/serialization
+│   │   ├── exporter.php             # Exporter interface
+│   │   └── ndjson.php               # NDJSON implementation
+│   ├── external/                    # Moodle web services
+│   │   ├── connection.php           # Connection test endpoint
+│   │   ├── backups.php              # Backup web service
+│   │   ├── courses.php              # Course web service
+│   │   ├── users.php                # User web service
+│   │   └── reports.php              # Report web service
+│   ├── form/                        # Moodle forms
+│   │   ├── wizard_step2_form.php    # Step 2 form
+│   │   └── wizard_step3_form.php    # Step 3 form
+│   ├── service/
+│   │   ├── course_backup.php        # Backup logic
+│   │   ├── course_restore.php       # Restore logic
+│   │   ├── course_report.php        # Report generation
+│   │   ├── notification.php         # Notification service
+│   │   ├── restore_validator.php    # Restore validation
+│   │   └── restore_data_preparer.php # Restore data preparation
+│   ├── task/                        # Scheduled/adhoc tasks
+│   │   ├── backup_and_upload_task.php
+│   │   ├── restore_course_task.php
+│   │   └── generate_and_upload_report_task.php
+│   ├── output/                      # Output/rendering
+│   │   ├── layout.php               # Layout rendering
+│   │   └── renderer.php             # Template rendering
+│   ├── privacy/
+│   │   └── provider.php             # GDPR compliance
+│   ├── config.php                   # Configuration class
+│   └── constants.php                # Constants definitions
+├── db/
+│   ├── access.php                   # Capability definitions
+│   ├── caches.php                   # Cache definitions
+│   └── services.php                 # Web service declarations
+├── amd/
+│   ├── src/                         # JavaScript source (AMD modules)
+│   │   ├── connection_test.js       # Connection test JS
+│   │   └── repository.js            # Repository module
+│   └── build/                       # Compiled/built JavaScript
+├── lang/
+│   └── en/
+│       └── local_chronifyai.php     # English language strings
+├── templates/                       # Mustache templates
+│   ├── layout.mustache              # Main layout template
+│   ├── wizard_step1.mustache        # Wizard step 1
+│   ├── wizard_step2.mustache        # Wizard step 2
+│   ├── wizard_step3.mustache        # Wizard step 3
+│   ├── wizard_step4.mustache        # Wizard step 4
+│   └── wizard_navigation.mustache   # Navigation component
+├── tests/                           # Unit/Feature tests (PHPUnit, Behat)
+├── pix/                             # Icons/images
+├── styles.css                       # Main stylesheet
+├── index.php                        # Main entry point (wizard interface)
+├── settings.php                     # Admin settings page
+├── version.php                      # Plugin version info
+├── API.md                           # API documentation
+├── README.md                        # Plugin documentation
+└── index.txt                        # This file
+
+## Flow Patterns
+
+1. **Web Service Flow**
+   - external/* → service/* → api/client → api/request → ChronifyAI API
+
+2. **Async Task Flow**
+   - task/* → service/* → api/client → api/request → ChronifyAI API
+
+3. **Wizard UI Flow**
+   - index.php → templates/wizard_step*.mustache + amd/src/*.js
+
+4. **Form Processing**
+   - classes/form/wizard_step*.php → Moodle form handling
+
+## Key Components
+
+### API Layer (classes/api/)
+- `client.php` - Main API operations and orchestration
+- `request.php` - HTTP request handling
+- `auth.php` - Authentication/token management
+- `endpoints.php` - API endpoint URLs
+- `response_handler.php` - API response processing
+
+### Business Logic (classes/service/)
+- `course_backup.php` - Course backup logic
+- `course_restore.php` - Course restore logic
+- `course_report.php` - Report generation
+- `restore_validator.php` - Validation of restore operations
+- `restore_data_preparer.php` - Data preparation for restore
+
+### Web Services (classes/external/)
+- `connection.php` - Test API connection
+- `backups.php` - Backup management
+- `courses.php` - Course operations
+- `users.php` - User management
+- `reports.php` - Report retrieval
+
+### Scheduled Tasks (classes/task/)
+- `backup_and_upload_task.php` - Scheduled backup execution
+- `restore_course_task.php` - Scheduled restore execution
+- `generate_and_upload_report_task.php` - Scheduled report generation
+
+### Frontend (amd/, templates/)
+- JavaScript modules for async operations
+- Mustache templates for UI rendering
+- Step-by-step wizard interface
+
+### Configuration & Access (db/)
+- Capabilities and permissions
+- Cache definitions
+- Web service endpoint declarations

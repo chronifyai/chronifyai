@@ -1,0 +1,41 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    @template local_chronifyai/wizard_navigation
+
+    Reusable wizard step navigation component.
+
+    Context variables:
+    * steps - Array of step objects with:
+        - number: Step number (1-4)
+        - url: Step URL
+        - is_current: Boolean, true if this is the current step
+        - is_completed: Boolean, true if step is completed
+        - show_check: Boolean, true if should display checkmark
+        - show_line_after: Boolean, true if line should follow this step
+}}
+
+<div class="chronifyai-wizard-header">
+    <div class="chronifyai-wizard-steps">
+        {{#steps}}
+            <a href="{{url}}" class="chronifyai-step {{#is_current}}active{{/is_current}}{{#is_completed}}completed{{/is_completed}}">
+                {{#show_check}}<span class="chronifyai-step-check">✓</span>{{/show_check}}{{number}}
+            </a>
+            {{#show_line_after}}<div class="chronifyai-step-line"></div>{{/show_line_after}}
+        {{/steps}}
+    </div>
+</div>

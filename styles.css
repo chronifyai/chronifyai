@@ -1,0 +1,735 @@
+/* Color variables */
+.path-admin-local-chronifyai {
+    --chronifyai-primary: #11504c;
+    --chronifyai-accent: #f79e1b;
+    --chronifyai-success: #28a745;
+    --chronifyai-secondary: #6c757d;
+    --chronifyai-light: #f8f9fa;
+    --chronifyai-border: #dee2e6;
+    --chronifyai-cta: #c04f15;
+}
+
+/* Main container */
+.chronifyai-wizard-container {
+    width: 100%;
+    min-height: 100vh;
+    background: #ffffff;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+.chronifyai-wizard-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    animation: chronifyai-wizard-fade-in-up 0.6s ease-out;
+}
+
+/* Header with step indicator */
+.chronifyai-wizard-header {
+    padding: 2rem 2rem 1rem 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+.chronifyai-wizard-steps {
+    display: flex;
+    align-items: center;
+    gap: 0;
+}
+
+.chronifyai-step {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #e9ecef;
+    color: #6c757d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    text-decoration: none;
+}
+
+.chronifyai-step:hover:not(.disabled) {
+    opacity: 0.8;
+}
+
+.chronifyai-step.active {
+    background: var(--chronifyai-primary);
+    color: white;
+    box-shadow: 0 0 0 3px rgba(17, 80, 76, 0.2);
+}
+
+.chronifyai-step.completed {
+    background: var(--chronifyai-success);
+    color: white;
+}
+
+.chronifyai-step-check {
+    font-weight: bold;
+}
+
+.chronifyai-step-line {
+    width: 60px;
+    height: 2px;
+    background: #e9ecef;
+}
+
+/* Main body content */
+.chronifyai-wizard-body {
+    flex: 1;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.chronifyai-wizard-body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 200px;
+    background-image: url([[pix:local_chronifyai|wizard-dots]]);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: top left;
+    z-index: 0;
+    opacity: 0.6;
+}
+
+.chronifyai-main-content {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: 4rem;
+    align-items: center;
+    width: 100%;
+}
+
+/* Text content section */
+.chronifyai-text-content {
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    min-height: 500px;
+}
+
+/* Form styles */
+.chronifyai-form-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+/* Step 1 specific styles */
+.chronifyai-wizard-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1.1;
+    margin: 0 0 2rem 0;
+    color: var(--chronifyai-primary);
+}
+
+.chronifyai-highlight {
+    color: var(--chronifyai-accent);
+}
+
+.chronifyai-welcome-description {
+    font-size: 1.125rem;
+    color: #495057;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+/* CTA Button */
+.chronifyai-cta-section {
+    margin-bottom: 2rem;
+}
+
+.chronifyai-btn-continue {
+    background: var(--chronifyai-cta);
+    color: white;
+    border: none;
+    padding: 1rem 2.5rem;
+    font-size: 1.125rem;
+    font-weight: 600;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(192, 79, 21, 0.3);
+    cursor: pointer;
+}
+
+.chronifyai-btn-continue:hover {
+    background: #a8430f;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(192, 79, 21, 0.4);
+    text-decoration: none;
+    color: white;
+}
+
+.chronifyai-btn-continue:focus,
+.chronifyai-btn-continue:active {
+    color: white;
+    text-decoration: none;
+    outline: 2px solid var(--chronifyai-primary);
+    outline-offset: 2px;
+}
+
+/* Form styles */
+.chronifyai-form-container {
+    width: 100%;
+}
+
+.chronifyai-form-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--chronifyai-primary);
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+}
+
+.chronifyai-form-subtitle {
+    color: #6c757d;
+    margin-bottom: 3rem;
+    font-size: 1.125rem;
+    line-height: 1.4;
+}
+
+/* Moodle form overrides */
+.chronifyai-form-container .mform {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.chronifyai-form-container .form-group {
+    margin-bottom: 1.5rem;
+}
+
+.chronifyai-form-container label {
+    font-weight: 600;
+    color: var(--chronifyai-primary);
+    font-size: 1rem;
+    margin-bottom: 0.5rem !important;
+}
+
+.chronifyai-form-container input[type="text"],
+.chronifyai-form-container input[type="url"],
+.chronifyai-form-container input[type="password"],
+.chronifyai-form-container select {
+    width: 100%;
+    padding: 0.875rem;
+    border: 2px solid var(--chronifyai-border);
+    border-radius: 0.375rem;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: white;
+    box-sizing: border-box;
+}
+
+.chronifyai-form-container input:focus,
+.chronifyai-form-container select:focus {
+    outline: none;
+    border-color: var(--chronifyai-primary);
+    box-shadow: 0 0 0 3px rgba(17, 80, 76, 0.1);
+}
+
+.chronifyai-form-container input::placeholder {
+    color: #adb5bd;
+}
+
+.chronifyai-form-container .form-text,
+.chronifyai-form-container .helptext {
+    display: block;
+    margin-top: 0.25rem;
+    font-size: 0.875rem;
+    color: #6c757d;
+    line-height: 1.4;
+}
+
+/* Test connection section */
+.chronifyai-test-connection-section {
+    padding: 1.5rem;
+    background: var(--chronifyai-light);
+    border-radius: 0.5rem;
+    border: 1px solid var(--chronifyai-border);
+    text-align: center;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.chronifyai-btn-test {
+    background: var(--chronifyai-secondary);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.375rem;
+    font-weight: 500;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.chronifyai-btn-test:hover:not(:disabled) {
+    background: #5a6268;
+    transform: translateY(-1px);
+}
+
+.chronifyai-btn-test:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.chronifyai-btn-test:focus {
+    outline: 2px solid var(--chronifyai-primary);
+    outline-offset: 2px;
+}
+
+.chronifyai-test-status {
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 0.375rem;
+    font-weight: 500;
+    display: none;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.chronifyai-test-status.success,
+.chronifyai-test-status.error,
+.chronifyai-test-status.loading {
+    display: flex;
+}
+
+.chronifyai-test-status.success {
+    background: #d1e7dd;
+    color: #0f5132;
+    border: 1px solid #badbcc;
+}
+
+.chronifyai-test-status.error {
+    background: #f8d7da;
+    color: #842029;
+    border: 1px solid #f5c2c7;
+}
+
+.chronifyai-test-status.loading {
+    background: #cfe2ff;
+    color: #084298;
+    border: 1px solid #b6d4fe;
+}
+
+.chronifyai-test-status .icon {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+/* Features section */
+.chronifyai-feature-benefits {
+    margin-top: 2rem;
+}
+
+.chronifyai-benefits-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--chronifyai-primary);
+    margin-bottom: 1rem;
+}
+
+.chronifyai-benefits-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.chronifyai-benefit-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+    color: #495057;
+    line-height: 1.4;
+}
+
+.chronifyai-benefit-item i {
+    color: var(--chronifyai-success);
+    font-size: 1rem;
+    flex-shrink: 0;
+}
+
+/* Moodle form buttons */
+.chronifyai-form-container button,
+.chronifyai-form-container input[type="submit"],
+.chronifyai-form-container input[type="button"] {
+    background: var(--chronifyai-primary);
+    color: white;
+    border: none;
+    padding: 0.875rem 1.5rem;
+    border-radius: 0.375rem;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-right: 0.5rem;
+    margin-bottom: 0;
+    box-shadow: 0 2px 8px rgba(17, 80, 76, 0.3);
+}
+
+.chronifyai-form-container button:hover,
+.chronifyai-form-container input[type="submit"]:hover,
+.chronifyai-form-container input[type="button"]:hover {
+    background: #0d3e3b;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(17, 80, 76, 0.4);
+}
+
+.chronifyai-form-container button:focus,
+.chronifyai-form-container input[type="submit"]:focus,
+.chronifyai-form-container input[type="button"]:focus {
+    outline: 2px solid var(--chronifyai-primary);
+    outline-offset: 2px;
+}
+
+/* Fixed position for form buttons at bottom of content */
+.chronifyai-form-container .mform #fgroup_id_buttongroup {
+    margin-top: auto;
+    padding-top: 2rem;
+    margin-bottom: 0;
+}
+
+.chronifyai-form-container #fgroup_id_buttongroup .felement {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/* Step 4 completion page */
+.chronifyai-completion-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 0 0 1.5rem 0;
+    color: var(--chronifyai-primary);
+}
+
+.chronifyai-completion-description {
+    font-size: 1.125rem;
+    color: #495057;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+.chronifyai-capabilities-section {
+    margin-bottom: 2rem;
+}
+
+.chronifyai-capabilities-intro {
+    font-size: 1rem;
+    color: #495057;
+    margin-bottom: 0.75rem;
+    font-weight: 500;
+}
+
+.chronifyai-capabilities-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2rem 0;
+}
+
+.chronifyai-capabilities-list li {
+    position: relative;
+    padding-left: 2rem;
+    margin-bottom: 0.75rem;
+    color: #495057;
+    line-height: 1.5;
+}
+
+.chronifyai-capabilities-list li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--chronifyai-primary);
+    font-weight: bold;
+    font-size: 1.25rem;
+}
+
+.chronifyai-next-step {
+    background: var(--chronifyai-light);
+    border-left: 4px solid var(--chronifyai-primary);
+    padding: 1rem 1.5rem;
+    margin-bottom: 2.5rem;
+    border-radius: 0 0.375rem 0.375rem 0;
+}
+
+.chronifyai-next-step p {
+    margin: 0;
+    color: #495057;
+    line-height: 1.5;
+}
+
+.chronifyai-completion-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+}
+
+.chronifyai-btn-dashboard {
+    background: var(--chronifyai-primary);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 0.375rem;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.chronifyai-btn-dashboard:hover,
+.chronifyai-btn-dashboard:focus {
+    background: #0d3f3c;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(17, 80, 76, 0.3);
+    color: white;
+    text-decoration: none;
+    outline: none;
+}
+
+.chronifyai-btn-settings {
+    background: transparent;
+    color: var(--chronifyai-primary);
+    border: 2px solid var(--chronifyai-primary);
+    padding: 1rem 2rem;
+    border-radius: 0.375rem;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.chronifyai-btn-settings:hover,
+.chronifyai-btn-settings:focus {
+    background: var(--chronifyai-primary);
+    color: white;
+    text-decoration: none;
+    outline: none;
+}
+
+.chronifyai-support-section {
+    padding-top: 1.5rem;
+    border-top: 1px solid #e9ecef;
+}
+
+.chronifyai-support-text {
+    margin: 0;
+    color: #6c757d;
+    font-size: 0.875rem;
+    text-align: center;
+}
+
+.chronifyai-support-email {
+    color: var(--chronifyai-primary);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.chronifyai-support-email:hover {
+    text-decoration: underline;
+}
+
+/* Image content section */
+.chronifyai-image-content {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    height: 400px;
+    position: relative;
+}
+
+.chronifyai-wizard-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    object-position: bottom right;
+}
+
+/* Footer */
+.chronifyai-wizard-footer {
+    padding: 2rem;
+    text-align: center;
+    border-top: 1px solid #e9ecef;
+    margin-top: auto;
+}
+
+.chronifyai-copyright {
+    color: #6c757d;
+    font-size: 0.875rem;
+    margin: 0;
+}
+
+/* Animations */
+@keyframes chronifyai-wizard-fade-in-up {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive design */
+@media (max-width: 1024px) {
+    .chronifyai-main-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center;
+    }
+
+    .chronifyai-wizard-body::before {
+        display: none;
+    }
+
+    .chronifyai-image-content {
+        display: none;
+    }
+
+    .chronifyai-wizard-title {
+        font-size: 3rem;
+    }
+
+    .chronifyai-form-title {
+        font-size: 2rem;
+    }
+
+    .chronifyai-text-content {
+        min-height: 450px;
+    }
+}
+
+@media (max-width: 768px) {
+    .chronifyai-wizard-header,
+    .chronifyai-wizard-body,
+    .chronifyai-wizard-footer {
+        padding: 1rem;
+    }
+
+    .chronifyai-wizard-body::before {
+        display: none;
+    }
+
+    .chronifyai-wizard-title {
+        font-size: 2.5rem;
+    }
+
+    .chronifyai-form-title {
+        font-size: 1.75rem;
+    }
+
+    .chronifyai-wizard-steps {
+        transform: scale(0.9);
+    }
+
+    .chronifyai-main-content {
+        gap: 1.5rem;
+    }
+
+    .chronifyai-image-content {
+        display: none;
+    }
+
+    .chronifyai-completion-title {
+        font-size: 2rem;
+    }
+
+    .chronifyai-completion-actions {
+        flex-direction: column;
+    }
+
+    .chronifyai-btn-dashboard,
+    .chronifyai-btn-settings {
+        text-align: center;
+        width: 100%;
+    }
+
+    .chronifyai-capabilities-list li {
+        padding-left: 1.5rem;
+    }
+
+    .chronifyai-text-content {
+        min-height: 400px;
+    }
+
+    .chronifyai-form-container #fgroup_id_buttongroup .felement {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .chronifyai-form-container button,
+    .chronifyai-form-container input[type="submit"],
+    .chronifyai-form-container input[type="button"] {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .chronifyai-wizard-body::before {
+        display: none;
+    }
+
+    .chronifyai-wizard-title {
+        font-size: 2rem;
+    }
+
+    .chronifyai-form-title {
+        font-size: 1.5rem;
+    }
+
+    .chronifyai-welcome-description {
+        font-size: 1rem;
+    }
+
+    .chronifyai-image-content {
+        display: none;
+    }
+
+    .chronifyai-text-content {
+        min-height: 350px;
+    }
+}
+
+/* Accessibility: Focus styles */
+.chronifyai-step:focus,
+.chronifyai-btn-continue:focus,
+.chronifyai-btn-test:focus,
+.chronifyai-btn-dashboard:focus,
+.chronifyai-btn-settings:focus {
+    outline: 2px solid var(--chronifyai-primary);
+    outline-offset: 2px;
+}

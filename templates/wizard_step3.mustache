@@ -1,0 +1,55 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    @template local_chronifyai/wizard_step3_content
+
+    ChronifyAI setup wizard - Features Enable/Disable content (Step 3)
+
+    Context variables:
+    * form - Rendered Moodle form HTML
+}}
+
+<div class="chronifyai-text-content">
+    <div class="chronifyai-form-container">
+        <h2 class="chronifyai-form-title">{{#str}}wizard:step3:title, local_chronifyai{{/str}}</h2>
+        <p class="chronifyai-form-subtitle">{{#str}}wizard:step3:description, local_chronifyai{{/str}}</p>
+
+        {{{form}}}
+
+        <div class="chronifyai-feature-benefits mt-5">
+            <h4 class="chronifyai-benefits-title">{{#str}}wizard:benefits:title, local_chronifyai{{/str}}</h4>
+            <ul class="chronifyai-benefits-list">
+                <li class="chronifyai-benefit-item">
+                    <i class="fa fa-check-circle" aria-hidden="true"></i>
+                    {{#str}}wizard:benefits:automatedarchiving, local_chronifyai{{/str}}
+                </li>
+                <li class="chronifyai-benefit-item">
+                    <i class="fa fa-check-circle" aria-hidden="true"></i>
+                    {{#str}}wizard:benefits:complianceready, local_chronifyai{{/str}}
+                </li>
+                <li class="chronifyai-benefit-item">
+                    <i class="fa fa-check-circle" aria-hidden="true"></i>
+                    {{#str}}wizard:benefits:easyretrieval, local_chronifyai{{/str}}
+                </li>
+                <li class="chronifyai-benefit-item">
+                    <i class="fa fa-check-circle" aria-hidden="true"></i>
+                    {{#str}}wizard:benefits:securestorage, local_chronifyai{{/str}}
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
