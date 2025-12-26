@@ -19,46 +19,39 @@
 
     ChronifyAI setup wizard - Completion page (Step 4)
 
-    Context variables:
-    * step_title - The title for this step
-    * dashboard_url - URL to Chronify dashboard
-    * settings_url - URL to manage settings
+    Example context (json):
+    {
+        "step_title": "Setup Complete!",
+        "dashboard_url": "https://app.chronifyai.com/dashboard",
+        "settings_url": "/admin/settings.php?section=local_chronifyai"
+    }
 }}
 
 <div class="chronifyai-text-content">
     <h2 class="chronifyai-completion-title">{{step_title}}</h2>
 
-    <p class="chronifyai-completion-description">
-        {{#str}}wizard:step4:description, local_chronifyai{{/str}}
+    <div class="chronifyai-success-icon">✓</div>
+
+    <p class="chronifyai-completion-message">
+        {{#str}}wizard:step4:message, local_chronifyai{{/str}}
     </p>
 
-    <div class="chronifyai-capabilities-section">
-        <p class="chronifyai-capabilities-intro">{{#str}}wizard:step4:capability:intro, local_chronifyai{{/str}}:</p>
-        <ul class="chronifyai-capabilities-list">
-            <li>{{#str}}wizard:step4:capability1, local_chronifyai{{/str}}</li>
-            <li>{{#str}}wizard:step4:capability2, local_chronifyai{{/str}}</li>
-            <li>{{#str}}wizard:step4:capability3, local_chronifyai{{/str}}</li>
-            <li>{{#str}}wizard:step4:capability4, local_chronifyai{{/str}}</li>
-        </ul>
-    </div>
-
-    <div class="chronifyai-next-step">
-        <p><strong>{{#str}}wizard:step4:nextstep, local_chronifyai{{/str}}:</strong> {{#str}}wizard:step4:nextstep:description, local_chronifyai{{/str}}</p>
-    </div>
-
     <div class="chronifyai-completion-actions">
-        <a href="{{dashboard_url}}" class="chronifyai-btn-dashboard">
-            {{#str}}ui:button:dashboard, local_chronifyai{{/str}}
+        <a href="{{dashboard_url}}" class="chronifyai-btn-primary" target="_blank">
+            {{#str}}wizard:step4:dashboard, local_chronifyai{{/str}}
         </a>
-        <a href="{{settings_url}}" class="chronifyai-btn-settings">
-            {{#str}}ui:button:settings, local_chronifyai{{/str}}
+
+        <a href="{{settings_url}}" class="chronifyai-btn-secondary">
+            {{#str}}wizard:step4:settings, local_chronifyai{{/str}}
         </a>
     </div>
 
-    <div class="chronifyai-support-section">
-        <p class="chronifyai-support-text">
-            {{#str}}wizard:step4:support:text, local_chronifyai{{/str}}
-            <a href="mailto:hello@chronifyai.com" class="chronifyai-support-email">hello@chronifyai.com</a>.
-        </p>
+    <div class="chronifyai-completion-info">
+        <h3>{{#str}}wizard:step4:nextsteps, local_chronifyai{{/str}}</h3>
+        <ul class="chronifyai-next-steps-list">
+            <li>{{#str}}wizard:step4:step1, local_chronifyai{{/str}}</li>
+            <li>{{#str}}wizard:step4:step2, local_chronifyai{{/str}}</li>
+            <li>{{#str}}wizard:step4:step3, local_chronifyai{{/str}}</li>
+        </ul>
     </div>
 </div>

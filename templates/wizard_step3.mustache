@@ -15,41 +15,43 @@
     along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 }}
 {{!
-    @template local_chronifyai/wizard_step3_content
+    @template local_chronifyai/wizard_step3
 
-    ChronifyAI setup wizard - Features Enable/Disable content (Step 3)
+    ChronifyAI setup wizard - Feature Configuration (Step 3)
 
-    Context variables:
-    * form - Rendered Moodle form HTML
+    Example context (json):
+    {
+        "form": "<form>Feature configuration form HTML</form>"
+    }
 }}
 
 <div class="chronifyai-text-content">
+    <h2 class="chronifyai-section-title">{{#str}}wizard:step3:title, local_chronifyai{{/str}}</h2>
+    <p class="chronifyai-section-description">
+        {{#str}}wizard:step3:description, local_chronifyai{{/str}}
+    </p>
+
     <div class="chronifyai-form-container">
-        <h2 class="chronifyai-form-title">{{#str}}wizard:step3:title, local_chronifyai{{/str}}</h2>
-        <p class="chronifyai-form-subtitle">{{#str}}wizard:step3:description, local_chronifyai{{/str}}</p>
-
         {{{form}}}
+    </div>
 
-        <div class="chronifyai-feature-benefits mt-5">
-            <h4 class="chronifyai-benefits-title">{{#str}}wizard:benefits:title, local_chronifyai{{/str}}</h4>
-            <ul class="chronifyai-benefits-list">
-                <li class="chronifyai-benefit-item">
-                    <i class="fa fa-check-circle" aria-hidden="true"></i>
-                    {{#str}}wizard:benefits:automatedarchiving, local_chronifyai{{/str}}
-                </li>
-                <li class="chronifyai-benefit-item">
-                    <i class="fa fa-check-circle" aria-hidden="true"></i>
-                    {{#str}}wizard:benefits:complianceready, local_chronifyai{{/str}}
-                </li>
-                <li class="chronifyai-benefit-item">
-                    <i class="fa fa-check-circle" aria-hidden="true"></i>
-                    {{#str}}wizard:benefits:easyretrieval, local_chronifyai{{/str}}
-                </li>
-                <li class="chronifyai-benefit-item">
-                    <i class="fa fa-check-circle" aria-hidden="true"></i>
-                    {{#str}}wizard:benefits:securestorage, local_chronifyai{{/str}}
-                </li>
-            </ul>
+    <div class="chronifyai-features-grid">
+        <div class="chronifyai-feature-card">
+            <div class="chronifyai-feature-icon">📦</div>
+            <h3>{{#str}}wizard:step3:feature:backup:title, local_chronifyai{{/str}}</h3>
+            <p>{{#str}}wizard:step3:feature:backup:desc, local_chronifyai{{/str}}</p>
+        </div>
+
+        <div class="chronifyai-feature-card">
+            <div class="chronifyai-feature-icon">↩️</div>
+            <h3>{{#str}}wizard:step3:feature:restore:title, local_chronifyai{{/str}}</h3>
+            <p>{{#str}}wizard:step3:feature:restore:desc, local_chronifyai{{/str}}</p>
+        </div>
+
+        <div class="chronifyai-feature-card">
+            <div class="chronifyai-feature-icon">📄</div>
+            <h3>{{#str}}wizard:step3:feature:transcripts:title, local_chronifyai{{/str}}</h3>
+            <p>{{#str}}wizard:step3:feature:transcripts:desc, local_chronifyai{{/str}}</p>
         </div>
     </div>
 </div>

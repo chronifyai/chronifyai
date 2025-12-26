@@ -15,19 +15,30 @@
     along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 }}
 {{!
-    @template local_chronifyai/wizard_step2_content
+    @template local_chronifyai/wizard_step2
 
-    ChronifyAI setup wizard - API Settings content (Step 2)
+    ChronifyAI setup wizard - Authentication Configuration (Step 2)
 
-    Context variables:
-    * form - Rendered Moodle form HTML
+    Example context (json):
+    {
+        "form": "<form>Authentication form HTML</form>"
+    }
 }}
 
 <div class="chronifyai-text-content">
-    <div class="chronifyai-form-container">
-        <h2 class="chronifyai-form-title">{{#str}}wizard:step2:title, local_chronifyai{{/str}}</h2>
-        <p class="chronifyai-form-subtitle">{{#str}}wizard:step2:description, local_chronifyai{{/str}}</p>
+    <h2 class="chronifyai-section-title">{{#str}}wizard:step2:title, local_chronifyai{{/str}}</h2>
+    <p class="chronifyai-section-description">
+        {{#str}}wizard:step2:description, local_chronifyai{{/str}}
+    </p>
 
+    <div class="chronifyai-form-container">
         {{{form}}}
+    </div>
+
+    <div class="chronifyai-info-box">
+        <div class="chronifyai-info-icon">ℹ️</div>
+        <div class="chronifyai-info-content">
+            <p>{{#str}}wizard:step2:info, local_chronifyai{{/str}}</p>
+        </div>
     </div>
 </div>

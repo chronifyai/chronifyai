@@ -17,25 +17,48 @@
 {{!
     @template local_chronifyai/wizard_navigation
 
-    Reusable wizard step navigation component.
+    Step indicator navigation for the wizard
 
-    Context variables:
-    * steps - Array of step objects with:
-        - number: Step number (1-4)
-        - url: Step URL
-        - is_current: Boolean, true if this is the current step
-        - is_completed: Boolean, true if step is completed
-        - show_check: Boolean, true if should display checkmark
-        - show_line_after: Boolean, true if line should follow this step
+    Example context (json):
+    {
+        "step": 1,
+        "step1_url": "/local/chronifyai/index.php?step=1",
+        "step2_url": "/local/chronifyai/index.php?step=2",
+        "step3_url": "/local/chronifyai/index.php?step=3",
+        "step4_url": "/local/chronifyai/index.php?step=4",
+        "step1_active": true,
+        "step2_active": false,
+        "step3_active": false,
+        "step4_active": false
+    }
 }}
 
 <div class="chronifyai-wizard-header">
     <div class="chronifyai-wizard-steps">
-        {{#steps}}
-            <a href="{{url}}" class="chronifyai-step {{#is_current}}active{{/is_current}}{{#is_completed}}completed{{/is_completed}}">
-                {{#show_check}}<span class="chronifyai-step-check">✓</span>{{/show_check}}{{number}}
-            </a>
-            {{#show_line_after}}<div class="chronifyai-step-line"></div>{{/show_line_after}}
-        {{/steps}}
+        <a href="{{step1_url}}" class="chronifyai-step {{#step1_active}}active{{/step1_active}}">
+            <span class="chronifyai-step-number">1</span>
+            <span class="chronifyai-step-label">{{#str}}wizard:step1:nav, local_chronifyai{{/str}}</span>
+        </a>
+
+        <div class="chronifyai-step-connector"></div>
+
+        <a href="{{step2_url}}" class="chronifyai-step {{#step2_active}}active{{/step2_active}}">
+            <span class="chronifyai-step-number">2</span>
+            <span class="chronifyai-step-label">{{#str}}wizard:step2:nav, local_chronifyai{{/str}}</span>
+        </a>
+
+        <div class="chronifyai-step-connector"></div>
+
+        <a href="{{step3_url}}" class="chronifyai-step {{#step3_active}}active{{/step3_active}}">
+            <span class="chronifyai-step-number">3</span>
+            <span class="chronifyai-step-label">{{#str}}wizard:step3:nav, local_chronifyai{{/str}}</span>
+        </a>
+
+        <div class="chronifyai-step-connector"></div>
+
+        <a href="{{step4_url}}" class="chronifyai-step {{#step4_active}}active{{/step4_active}}">
+            <span class="chronifyai-step-number">4</span>
+            <span class="chronifyai-step-label">{{#str}}wizard:step4:nav, local_chronifyai{{/str}}</span>
+        </a>
     </div>
 </div>

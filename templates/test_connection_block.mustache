@@ -17,21 +17,24 @@
 {{!
     @template local_chronifyai/test_connection_block
 
-    Test API connection block component.
+    Test connection block for API credential validation
 
-    Context variables: none (static component)
+    Example context (json):
+    {
+        "testurl": "/local/chronifyai/test.php",
+        "status": "success",
+        "message": "Connection successful"
+    }
 }}
 
-<div class="chronifyai-test-connection-section">
-    <button type="button" class="chronifyai-btn-test" id="test-connection-btn">
-        <i class="fa fa-plug" aria-hidden="true"></i>
-        {{#str}}ui:button:testconnection, local_chronifyai{{/str}}
-    </button>
-    <div id="connection-result" class="chronifyai-test-status"></div>
-</div>
+<div class="chronifyai-test-connection">
+    <h4>{{#str}}wizard:step2:test:title, local_chronifyai{{/str}}</h4>
+    <p>{{#str}}wizard:step2:test:description, local_chronifyai{{/str}}</p>
 
-{{#js}}
-require(['local_chronifyai/connection_test'], function(ConnectionTest) {
-    ConnectionTest.init('#test-connection-btn');
-});
-{{/js}}
+    <button type="button" class="chronifyai-btn-test" id="test-connection-btn"
+            data-test-url="{{testurl}}">
+        {{#str}}wizard:step2:test:button, local_chronifyai{{/str}}
+    </button>
+
+    <div id="test-result" class="chronifyai-test-result"></div>
+</div>

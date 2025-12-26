@@ -25,8 +25,8 @@
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'local_chronifyai';
-$plugin->version = 2025012713; // YYYYMMDDXX format.
+$plugin->version = 2025012714; // YYYYMMDDXX format.
 $plugin->requires = 2022041900;
 $plugin->supported = [400, 403];
 $plugin->maturity = MATURITY_STABLE;
-$plugin->release = 'v1.5.0'; // All issues fixed!
+$plugin->release = 'v1.6.0'; // Mustache examples fixed!
