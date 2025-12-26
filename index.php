@@ -71,11 +71,19 @@ switch ($step) {
 
             // Determine the next step based on which button was clicked.
             if (isset($formdata->next)) {
-                redirect($stepurls['step3_url'], get_string('status:settings:saved', 'local_chronifyai'),
-                    null, \core\output\notification::NOTIFY_SUCCESS);
+                redirect(
+                    $stepurls['step3_url'],
+                    get_string('status:settings:saved', 'local_chronifyai'),
+                    null,
+                    \core\output\notification::NOTIFY_SUCCESS
+                );
             } else {
-                redirect($pageurl, get_string('status:settings:saved', 'local_chronifyai'),
-                    null, \core\output\notification::NOTIFY_SUCCESS);
+                redirect(
+                    $pageurl,
+                    get_string('status:settings:saved', 'local_chronifyai'),
+                    null,
+                    \core\output\notification::NOTIFY_SUCCESS
+                );
             }
         }
         break;
@@ -92,11 +100,19 @@ switch ($step) {
 
             // Determine the next step based on which button was clicked.
             if (isset($formdata->next)) {
-                redirect($stepurls['step4_url'], get_string('status:settings:saved', 'local_chronifyai'),
-                    null, \core\output\notification::NOTIFY_SUCCESS);
+                redirect(
+                    $stepurls['step4_url'],
+                    get_string('status:settings:saved', 'local_chronifyai'),
+                    null,
+                    \core\output\notification::NOTIFY_SUCCESS
+                );
             } else {
-                redirect($pageurl, get_string('status:settings:saved', 'local_chronifyai'),
-                    null, \core\output\notification::NOTIFY_SUCCESS);
+                redirect(
+                    $pageurl,
+                    get_string('status:settings:saved', 'local_chronifyai'),
+                    null,
+                    \core\output\notification::NOTIFY_SUCCESS
+                );
             }
         }
         break;

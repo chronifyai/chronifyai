@@ -71,9 +71,10 @@ class client {
     }
 
     /**
-     * Create a course report by uploading JSON data as a file to ChronifyAI.
+     * Create a course report by uploading JSON data to ChronifyAI.
      *
-     * @param string $filepath The path to the JSON report file
+     * @param array $reportdata The report data to send
+     * @param array $attachments File attachments for the report
      * @return \stdClass Response data
      * @throws moodle_exception If request fails
      */

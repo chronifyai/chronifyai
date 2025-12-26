@@ -1,3 +1,7 @@
 {
-    "form": "<form>Form HTML</form>"
+    "examples": [
+        {
+            "form": "<form>Form HTML</form>"
+        }
+    ]
 }

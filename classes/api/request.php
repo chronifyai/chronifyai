@@ -57,10 +57,6 @@ final class request {
      * @return stdClass Response data
      * @throws moodle_exception If request fails
      *
-     * @example
-     * ```php
-     * $courses = request::get('courses', ['limit' => 10]);
-     * ```
      */
     public static function get(string $endpoint, array $params = []): stdClass {
         return self::request('GET', $endpoint, $params);
@@ -71,13 +67,10 @@ final class request {
      *
      * @param string $endpoint Endpoint path
      * @param array $data Request body data
+     * @param array $attachments File attachments to upload
      * @return stdClass Response data
      * @throws moodle_exception If request fails
      *
-     * @example
-     * ```php
-     * $schedule = request::post('schedules', ['name' => 'Daily Backup']);
-     * ```
      */
     public static function post(string $endpoint, array $data = [], array $attachments = []): stdClass {
         return self::request('POST', $endpoint, $data, attachments: $attachments);
@@ -121,10 +114,6 @@ final class request {
      * @return stdClass Response data
      * @throws moodle_exception If request fails or plugin is disabled
      *
-     * @example
-     * ```php
-     * $response = request::request('GET', 'courses/123', ['include' => 'activities']);
-     * ```
      */
     public static function request(
         string $method,
@@ -218,18 +207,11 @@ final class request {
      *
      * @param string $endpoint Upload endpoint
      * @param string $filepath Path to the file to upload
-     * @param string $contentType Content type for the upload
-     * @param array $queryParams Additional query parameters
+     * @param string $contenttype Content type for the upload
+     * @param array $queryparams Additional query parameters
      * @return stdClass Response data
      * @throws moodle_exception If upload fails
      *
-     * @example
-     * ```php
-     * $result = request::upload_file('backups/stream-upload',
-     *                               '/path/to/backup.mbz',
-     *                               'application/octet-stream',
-     *                               ['type' => 'moodle']);
-     * ```
      */
     public static function upload_file(
         string $endpoint,
@@ -347,7 +329,13 @@ final class request {
                 throw new moodle_exception('error:file:notfound', constants::PLUGIN_NAME, '', null, '(HTTP 404)');
             }
 
-            throw new moodle_exception('error:file:downloadfailed', constants::PLUGIN_NAME, '', null, "Download failed (HTTP {$statuscode})");
+            throw new moodle_exception(
+                'error:file:downloadfailed',
+                constants::PLUGIN_NAME,
+                '',
+                null,
+                "Download failed (HTTP {$statuscode})"
+            );
         } catch (GuzzleException $e) {
             self::cleanup_temp_file($tempfile);
             throw new moodle_exception('error:file:downloadfailed', constants::PLUGIN_NAME, '', null, $e->getMessage());
@@ -370,7 +358,7 @@ final class request {
      * Build the full API URL for an endpoint.
      *
      * @param string $endpoint Endpoint path
-     * @param array $queryParams Query parameters to append
+     * @param array $queryparams Query parameters to append
      * @return string Full URL
      */
     private static function build_url(string $endpoint, array $queryparams = []): string {
@@ -519,7 +507,7 @@ final class request {
      * @param string $endpoint Endpoint path
      * @param array $data Request data
      * @param int $attempt Current attempt number
-     * @param string $tracking_key Request tracking key
+     * @param string $trackingkey Request tracking key
      * @return stdClass Response data from retry
      * @throws moodle_exception If retry fails or max attempts exceeded
      */
@@ -611,7 +599,13 @@ final class request {
         // For HTTP responses, use the response handler to get a proper error message.
         if ($response) {
             $processedresponse = response_handler::process($response, $method);
-            throw new moodle_exception('error:api:communicationfailed', constants::PLUGIN_NAME, '', null, $processedresponse->error_message);
+            throw new moodle_exception(
+                'error:api:communicationfailed',
+                constants::PLUGIN_NAME,
+                '',
+                null,
+                $processedresponse->error_message
+            );
         }
 
         // For connection errors, format a clear message.
@@ -655,10 +649,12 @@ final class request {
 
         if (str_contains($message, 'cURL error')) {
             if (str_contains($message, 'Connection timed out')) {
-                return 'Connection timed out while connecting to ChronifyAI API. Please check your internet connection and try again.';
+                return 'Connection timed out while connecting to ChronifyAI API. ' .
+                       'Please check your internet connection and try again.';
             }
             if (str_contains($message, 'Could not resolve host')) {
-                return 'Cannot reach ChronifyAI API server. Please check your DNS settings and internet connection.';
+                return 'Cannot reach ChronifyAI API server. ' .
+                       'Please check your DNS settings and internet connection.';
             }
             if (str_contains($message, 'Connection refused')) {
                 return 'Connection refused by ChronifyAI API server. The service may be temporarily unavailable.';
@@ -691,7 +687,7 @@ final class request {
      * Validate API response structure.
      *
      * @param stdClass $response The API response
-     * @param array $requiredFields Required fields in the response
+     * @param array $requiredfields Required fields in the response
      * @return bool True if the response is valid
      * @throws moodle_exception If response validation fails
      */

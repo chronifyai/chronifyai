@@ -56,7 +56,7 @@ class wizard_step3_form extends \moodleform {
             get_string('acknowledge_data_transmission_desc', 'local_chronifyai')
         );
         $mform->setType('data_transmission_acknowledged', PARAM_BOOL);
-        
+
         // Make acknowledgment required only when enabling the plugin.
         $mform->disabledIf('data_transmission_acknowledged', 'enabled');
 

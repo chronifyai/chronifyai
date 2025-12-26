@@ -1,5 +1,9 @@
 {
-    "navigation": "<div>Navigation HTML</div>",
-    "content": "<div>Main content HTML</div>",
-    "backgroundimage": "https://example.com/image.png"
+    "examples": [
+        {
+            "navigation": "<div>Navigation</div>",
+            "content": "<div>Content</div>",
+            "backgroundimage": "https://example.com/bg.png"
+        }
+    ]
 }

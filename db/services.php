@@ -81,7 +81,8 @@ $functions = [
         'methodname'   => 'initiate_course_restore',
         'description'  => 'Queues a task to download and restore a backup from ChronifyAI into an existing course.',
         'type'         => 'write',
-        'capabilities' => 'local/chronifyai:useservice,moodle/restore:restorecourse,moodle/restore:restoreactivity,moodle/backup:configure',
+        'capabilities' => 'local/chronifyai:useservice,moodle/restore:restorecourse,' .
+                          'moodle/restore:restoreactivity,moodle/backup:configure',
     ],
     'local_chronifyai_initiate_transcripts_export' => [
         'classname'    => \local_chronifyai\external\users::class,

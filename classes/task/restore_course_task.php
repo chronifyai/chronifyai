@@ -54,8 +54,8 @@ class restore_course_task extends adhoc_task {
 
         // Get task data.
         $data = $this->get_custom_data();
-        
-        // Validate required fields exist
+
+        // Validate required fields exist.
         if (!isset($data->courseid)) {
             throw new \moodle_exception('error:restore:missingcourseid', 'local_chronifyai');
         }
@@ -65,7 +65,7 @@ class restore_course_task extends adhoc_task {
         if (!isset($data->externaluserid)) {
             throw new \moodle_exception('error:restore:missingexternaluserid', 'local_chronifyai');
         }
-        
+
         $courseid = $data->courseid;
         $backupid = $data->backupid;
         $externaluserid = (int) $data->externaluserid; // ChronifyAI app user ID - cast to int.

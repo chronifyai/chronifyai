@@ -49,8 +49,18 @@ class backups extends external_api {
     public static function initiate_course_backup_parameters() {
         return new external_function_parameters([
             'courseid' => new external_value(PARAM_INT, 'Course ID to backup'),
-            'includeusers' => new external_value(PARAM_BOOL, 'Include user data in backup', VALUE_DEFAULT, true),
-            'userid' => new external_value(PARAM_INT, 'External User ID performing the backup (optional, for notifications)', VALUE_DEFAULT, 0),
+            'includeusers' => new external_value(
+                PARAM_BOOL,
+                'Include user data in backup',
+                VALUE_DEFAULT,
+                true
+            ),
+            'userid' => new external_value(
+                PARAM_INT,
+                'External User ID performing the backup (optional, for notifications)',
+                VALUE_DEFAULT,
+                0
+            ),
         ]);
     }
 
@@ -143,7 +153,7 @@ class backups extends external_api {
                 $params['includeusers'] ? 'INCLUDED' : 'EXCLUDED',
                 $USER->id
             );
-            
+
             // Use Moodle's standard logging for audit trail.
             $event = \core\event\course_backup_created::create([
                 'objectid' => $params['courseid'],
@@ -152,7 +162,7 @@ class backups extends external_api {
                     'includeusers' => $params['includeusers'],
                     'destination' => 'ChronifyAI external service',
                     'taskid' => $taskid,
-                ]
+                ],
             ]);
             $event->trigger();
 
@@ -194,10 +204,26 @@ class backups extends external_api {
      */
     public static function initiate_course_restore_parameters(): external_function_parameters {
         return new external_function_parameters([
-            'courseid' => new external_value(PARAM_INT, 'Course ID to restore into (0 = create new course)'),
-            'backupid' => new external_value(PARAM_INT, 'Backup ID on ChronifyAI to download and restore'),
-            'options' => new external_value(PARAM_RAW, 'JSON string with restore options', VALUE_DEFAULT, '{}'),
-            'userid' => new external_value(PARAM_INT, 'External User ID performing the restore (optional, for notifications)', VALUE_DEFAULT, 0),
+            'courseid' => new external_value(
+                PARAM_INT,
+                'Course ID to restore into (0 = create new course)'
+            ),
+            'backupid' => new external_value(
+                PARAM_INT,
+                'Backup ID on ChronifyAI to download and restore'
+            ),
+            'options' => new external_value(
+                PARAM_RAW,
+                'JSON string with restore options',
+                VALUE_DEFAULT,
+                '{}'
+            ),
+            'userid' => new external_value(
+                PARAM_INT,
+                'External User ID performing the restore (optional, for notifications)',
+                VALUE_DEFAULT,
+                0
+            ),
         ]);
     }
 

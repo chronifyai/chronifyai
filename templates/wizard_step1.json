@@ -1,5 +1,8 @@
 {
-    "step_title": "Welcome to ChronifyAI",
-    "step_description": "This wizard will guide you through the setup process.",
-    "next_url": "https://example.com/next"
+    "examples": [
+        {
+            "step_description": "Welcome to ChronifyAI setup wizard",
+            "next_url": "/local/chronifyai/index.php?step=2"
+        }
+    ]
 }

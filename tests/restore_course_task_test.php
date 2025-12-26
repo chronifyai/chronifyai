@@ -57,14 +57,14 @@ final class restore_course_task_test extends advanced_testcase {
      */
     public function test_execute_fails_when_course_not_found(): void {
         $this->resetDebugging(); // Reset debugging to allow debugging() calls in this test
-        
+
         $user = $this->getDataGenerator()->create_user();
 
         // Prepare task data with non-existent course ID.
         $data = new stdClass();
         $data->courseid = 99999; // Non-existent course.
         $data->backupid = 'test-backup-123';
-        $data->externaluserid = 123; // FIX: Use integer instead of string
+        $data->externaluserid = 123; // FIX: Use integer instead of string.
         $data->isnewcourse = false;
         $data->restoreoptions = [];
 
@@ -149,7 +149,7 @@ final class restore_course_task_test extends advanced_testcase {
         $user = $this->getDataGenerator()->create_user();
 
         $data = new stdClass();
-        // Missing courseid intentionally
+        // Missing courseid intentionally.
         $data->backupid = 'backup-123';
         $data->externaluserid = 456;
         $data->isnewcourse = false;
@@ -173,7 +173,7 @@ final class restore_course_task_test extends advanced_testcase {
 
         $data = new stdClass();
         $data->courseid = $course->id;
-        // Missing backupid intentionally
+        // Missing backupid intentionally.
         $data->externaluserid = 456;
         $data->isnewcourse = false;
 

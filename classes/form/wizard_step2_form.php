@@ -51,7 +51,11 @@ class wizard_step2_form extends \moodleform {
         $mform->setDefault('client_id', config::get_client_id() ?? '');
 
         // Client Secret field.
-        $mform->addElement('passwordunmask', 'client_secret', get_string('settings:authentication:clientsecret', constants::PLUGIN_NAME));
+        $mform->addElement(
+            'passwordunmask',
+            'client_secret',
+            get_string('settings:authentication:clientsecret', constants::PLUGIN_NAME)
+        );
         $mform->setType('client_secret', PARAM_TEXT);
         $mform->addRule('client_secret', get_string('required'), 'required', null, 'client');
         $mform->addHelpButton('client_secret', 'settings:authentication:clientsecret', constants::PLUGIN_NAME);

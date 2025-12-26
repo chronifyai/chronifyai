@@ -118,7 +118,11 @@ class api_helper {
     }
 
     /**
-     * Standardized error response
+     * Create a standardized error response.
+     *
+     * @param string $message Error message
+     * @param int $code HTTP error code
+     * @return array Error response array
      */
     public static function create_error_response(string $message, int $code = 400): array {
         return [

@@ -16,8 +16,6 @@
 
 namespace local_chronifyai;
 
-defined('MOODLE_INTERNAL') || die();
-
 /**
  * Hook callbacks for local_chronifyai.
  *

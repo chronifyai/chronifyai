@@ -53,19 +53,10 @@ final class auth {
      * Attempts to retrieve a cached token first. If no valid cached token exists,
      * request a new token via SSO authentication.
      *
-     * @param bool $force_refresh Force a new token request even if a cached token exists
+     * @param bool $forcerefresh Force a new token request even if a cached token exists
      * @return string Valid authentication token
      * @throws moodle_exception If authentication fails or configuration is invalid
      *
-     * @example
-     * ```php
-     * try {
-     *     $token = auth::get_token();
-     *     // Use token for API requests
-     * } catch (moodle_exception $e) {
-     *     // Handle authentication error
-     * }
-     * ```
      */
     public static function get_token(bool $forcerefresh = false): string {
         // Use locking to prevent concurrent token refresh issues.
@@ -123,12 +114,6 @@ final class auth {
      * @return stdClass Token response object containing token and metadata
      * @throws moodle_exception If SSO authentication fails
      *
-     * @example
-     * ```php
-     * $tokendata = auth::request_sso_token();
-     * echo "Token: " . $tokendata->token;
-     * echo "Expires: " . $tokendata->expires_at;
-     * ```
      */
     public static function request_sso_token(): stdClass {
         global $CFG;
@@ -290,13 +275,6 @@ final class auth {
      * @param string $token The token to validate
      * @return bool True if the token is valid, false otherwise
      *
-     * @example
-     * ```php
-     * $token = auth::get_token();
-     * if (!auth::validate_token($token)) {
-     *     $token = auth::get_token(true); // Force refresh
-     * }
-     * ```
      */
     public static function validate_token(string $token): bool {
         if (empty($token)) {
@@ -390,11 +368,6 @@ final class auth {
      *
      * @return bool True if a token was cleared, false if no token was cached
      *
-     * @example
-     * ```php
-     * // Clear token after logout or security event
-     * auth::clear_token();
-     * ```
      */
     public static function clear_token(): bool {
         $cache = self::get_cache();
@@ -409,13 +382,6 @@ final class auth {
      *
      * @return array|null Token metadata or null if no token cached
      *
-     * @example
-     * ```php
-     * $token_info = auth::get_token_info();
-     * if ($token_info && $token_info['expires_at'] < time() + 300) {
-     *     // Token expires in 5 minutes, consider refreshing
-     * }
-     * ```
      */
     public static function get_token_info(): ?array {
         $cache = self::get_cache();
@@ -443,12 +409,6 @@ final class auth {
      *
      * @return bool True if auth configuration appears valid, false otherwise
      *
-     * @example
-     * ```php
-     * if (!auth::is_configured()) {
-     *     throw new moodle_exception('auth_not_configured', 'local_chronifyai');
-     * }
-     * ```
      */
     public static function is_configured(): bool {
         return config::has_valid_config();
@@ -463,14 +423,6 @@ final class auth {
      * @return string New authentication token
      * @throws moodle_exception If token refresh fails
      *
-     * @example
-     * ```php
-     * try {
-     *     $new_token = auth::refresh_token();
-     * } catch (moodle_exception $e) {
-     *     // Handle refresh failure
-     * }
-     * ```
      */
     public static function refresh_token(): string {
         self::clear_token();

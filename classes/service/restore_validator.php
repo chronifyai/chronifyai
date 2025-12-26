@@ -354,7 +354,12 @@ class restore_validator {
         global $DB;
 
         if (empty($userid)) {
-            throw new moodle_exception('error:user:idmissing', 'local_chronifyai', '', 'User ID is required for restore operations');
+            throw new moodle_exception(
+                'error:user:idmissing',
+                'local_chronifyai',
+                '',
+                'User ID is required for restore operations'
+            );
         }
 
         if (!$DB->record_exists('user', ['id' => $userid])) {

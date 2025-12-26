@@ -55,11 +55,6 @@ class endpoints {
      * @param array $params Parameters to replace
      * @return string Formatted endpoint
      *
-     * @example
-     * ```php
-     * $endpoint = endpoints::format(endpoints::COURSE_DETAIL, ['id' => 123]);
-     * // Returns: 'courses/123'
-     * ```
      */
     public static function format($endpoint, array $params = []) {
         $path = $endpoint;

@@ -34,14 +34,6 @@ final class config {
      * @param mixed $default The default value to return if config key is not found
      * @return mixed The configuration value or default value
      *
-     * @example
-     * ```php
-     * // Get a simple config value with default
-     * $timeout = config::get('api_timeout', 30);
-     *
-     * // Get a boolean config value
-     * $enabled = config::get('feature_enabled', false);
-     * ```
      */
     public static function get(string $name, mixed $default = null): mixed {
         $value = get_config(constants::PLUGIN_NAME, $name);
@@ -58,14 +50,6 @@ final class config {
      * @param mixed $value The value to save
      * @return bool True if the configuration was saved successfully
      *
-     * @example
-     * ```php
-     * // Set a configuration value
-     * config::set('api_timeout', 60);
-     *
-     * // Enable the plugin
-     * config::set('enabled', true);
-     * ```
      */
     public static function set(string $name, mixed $value): bool {
         // Get the old value before changing it.
@@ -95,11 +79,6 @@ final class config {
      *
      * @return string The API base URL (without trailing slash)
      *
-     * @example
-     * ```php
-     * $baseurl = config::get_api_base_url();
-     * // Returns: 'https://app.chronifyai.com/api'
-     * ```
      */
     public static function get_api_base_url(): string {
         return (string) self::get('api_base_url', constants::DEFAULT_API_BASE_URL);
@@ -113,13 +92,6 @@ final class config {
      *
      * @return string|null The client ID or null if not configured
      *
-     * @example
-     * ```php
-     * $clientid = config::get_client_id();
-     * if (empty($clientid)) {
-     *     throw new \moodle_exception('Client ID not configured');
-     * }
-     * ```
      */
     public static function get_client_id(): ?string {
         $value = self::get('client_id');
@@ -135,13 +107,6 @@ final class config {
      *
      * @return string|null The client secret or null if not configured
      *
-     * @example
-     * ```php
-     * $secret = config::get_client_secret();
-     * if (empty($secret)) {
-     *     throw new \moodle_exception('Client secret not configured');
-     * }
-     * ```
      */
     public static function get_client_secret(): ?string {
         $value = self::get('client_secret');
@@ -157,11 +122,6 @@ final class config {
      *
      * @return string The email address to use for authentication
      *
-     * @example
-     * ```php
-     * $email = config::get_email();
-     * // Returns configured email or current user's email
-     * ```
      */
     public static function get_email(): string {
         global $USER;
@@ -176,12 +136,6 @@ final class config {
      *
      * @return bool True if the plugin is enabled, false otherwise
      *
-     * @example
-     * ```php
-     * if (!config::is_enabled()) {
-     *     throw new \moodle_exception('Plugin is disabled');
-     * }
-     * ```
      */
     public static function is_enabled(): bool {
         return (bool) self::get('enabled', false);
@@ -195,13 +149,6 @@ final class config {
      *
      * @return bool True if all required config is present, false otherwise
      *
-     * @example
-     * ```php
-     * if (!config::has_valid_config()) {
-     *     redirect(new moodle_url('/admin/settings.php',
-     *         ['section' => 'local_chronifyai']));
-     * }
-     * ```
      */
     public static function has_valid_config(): bool {
         // Check if the plugin is enabled.
@@ -228,15 +175,6 @@ final class config {
      *
      * @return array<string> Array of error messages, empty if config is valid
      *
-     * @example
-     * ```php
-     * $errors = config::get_config_errors();
-     * if (!empty($errors)) {
-     *     foreach ($errors as $error) {
-     *         echo \core\output\notification::notify($error, 'error');
-     *     }
-     * }
-     * ```
      */
     public static function get_config_errors(): array {
         $errors = [];

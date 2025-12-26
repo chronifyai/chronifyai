@@ -41,7 +41,7 @@ final class provider_test extends provider_testcase {
     public function test_get_metadata(): void {
         $collection = new collection('local_chronifyai');
         $result = provider::get_metadata($collection);
-        
+
         $this->assertInstanceOf(collection::class, $result);
         $this->assertNotEmpty($result->get_collection());
     }
@@ -53,10 +53,10 @@ final class provider_test extends provider_testcase {
      */
     public function test_get_contexts_for_userid(): void {
         $this->resetAfterTest();
-        
+
         $user = $this->getDataGenerator()->create_user();
         $contextlist = provider::get_contexts_for_userid($user->id);
-        
+
         $this->assertInstanceOf(\core_privacy\local\request\contextlist::class, $contextlist);
     }
 }
