@@ -56,6 +56,8 @@ final class restore_course_task_test extends advanced_testcase {
      * @covers ::execute
      */
     public function test_execute_fails_when_course_not_found(): void {
+        $this->resetDebugging(); // Reset debugging to allow debugging() calls in this test
+        
         $user = $this->getDataGenerator()->create_user();
 
         // Prepare task data with non-existent course ID.
@@ -71,11 +73,15 @@ final class restore_course_task_test extends advanced_testcase {
         $task->set_custom_data($data);
         $task->set_userid($user->id);
 
-        // Expect exception - debugging calls will happen but that's OK
+        // Expect exception - debugging calls will happen but we've reset debugging
         $this->expectException(moodle_exception::class);
         $this->expectExceptionMessage('coursenotfound');
 
-        $task->execute();
+        try {
+            $task->execute();
+        } finally {
+            $this->resetDebugging(); // Clean up after test
+        }
     }
 
     /**
