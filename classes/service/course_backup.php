@@ -143,13 +143,19 @@ class course_backup {
             'competencies' => 1,
             'customfield' => 1,
             'contentbankcontent' => 1,
-            'xapistate' => 1,
+            'xapistate' => 1, // Only in Moodle 4.3+.
             'legacyfiles' => 1,
         ];
 
+        // Only set settings that exist in this Moodle version.
         foreach ($settings as $name => $value) {
-            if ($setting = $plan->get_setting($name)) {
-                $setting->set_value($value);
+            try {
+                if ($setting = $plan->get_setting($name)) {
+                    $setting->set_value($value);
+                }
+            } catch (Exception $e) {
+                // Setting doesn't exist in this Moodle version - skip it.
+                continue;
             }
         }
     }
