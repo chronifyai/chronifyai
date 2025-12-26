@@ -39,9 +39,16 @@ class course_backup_test extends advanced_testcase {
      * @covers ::create_backup_for_upload
      */
     public function test_create_backup_for_upload_success(): void {
+        global $DB;
+        
         // Create a course and user
         $course = $this->getDataGenerator()->create_course();
         $user = $this->getDataGenerator()->create_user();
+        
+        // Grant the user backup capability
+        $roleid = $DB->get_field('role', 'id', ['shortname' => 'manager']);
+        $context = \context_course::instance($course->id);
+        role_assign($roleid, $user->id, $context->id);
 
         // Test actual backup creation (integration test style)
         // Skip mocking the private method - test the public interface instead
@@ -58,9 +65,16 @@ class course_backup_test extends advanced_testcase {
      * @dataProvider userdata_provider
      */
     public function test_create_backup_for_upload_userdata_settings(bool $userdata): void {
+        global $DB;
+        
         // Create a course and user
         $course = $this->getDataGenerator()->create_course();
         $user = $this->getDataGenerator()->create_user();
+        
+        // Grant the user backup capability
+        $roleid = $DB->get_field('role', 'id', ['shortname' => 'manager']);
+        $context = \context_course::instance($course->id);
+        role_assign($roleid, $user->id, $context->id);
 
         // Test the backup creation
         $result = $this->service->create_backup_for_upload($course->id, $userdata, $user->id);

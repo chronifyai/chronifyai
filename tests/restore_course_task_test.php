@@ -71,9 +71,12 @@ final class restore_course_task_test extends advanced_testcase {
         $task->set_custom_data($data);
         $task->set_userid($user->id);
 
-        // Expect exception.
+        // Expect debugging calls (the task logs errors via debugging())
         $this->expectException(moodle_exception::class);
         $this->expectExceptionMessage('coursenotfound');
+        
+        // Allow debugging calls during this test
+        $this->expectDebugging();
 
         $task->execute();
     }
@@ -152,7 +155,8 @@ final class restore_course_task_test extends advanced_testcase {
         $task->set_custom_data($data);
         $task->set_userid($user->id);
 
-        $this->expectException(\Exception::class);
+        $this->expectException(moodle_exception::class);
+        $this->expectExceptionMessage('missingcourseid');
         $task->execute();
     }
 
@@ -174,7 +178,10 @@ final class restore_course_task_test extends advanced_testcase {
         $task->set_custom_data($data);
         $task->set_userid($user->id);
 
-        $this->expectException(\Exception::class);
+        $this->expectException(moodle_exception::class);
+        $this->expectExceptionMessage('missingbackupid');
+        $task->execute();
+    }
         $task->execute();
     }
 }

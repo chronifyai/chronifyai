@@ -283,3 +283,8 @@ $string['service:restore:errorsmessage'] = 'Errors: {$a}';
 // Task: Generate and upload report strings (Issue #4).
 $string['task:report:unexpectedformat'] = 'Unexpected response format';
 $string['task:report:unexpectederror'] = 'Unexpected error during report upload: {$a}';
+
+// Restore task error messages (for field validation)
+$string['error:restore:missingcourseid'] = 'Course ID is required for restore operation';
+$string['error:restore:missingbackupid'] = 'Backup ID is required for restore operation';
+$string['error:restore:missingexternaluserid'] = 'External user ID is required for restore operation';
