@@ -25,8 +25,8 @@
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'local_chronifyai';
-$plugin->version = 2025012717; // YYYYMMDDXX format.
+$plugin->version = 2025012718; // YYYYMMDDXX format.
 $plugin->requires = 2022041900;
 $plugin->supported = [400, 403];
 $plugin->maturity = MATURITY_STABLE;
-$plugin->release = 'v2.0.1'; // Moodle 4.1 compatibility fix!
+$plugin->release = 'v2.0.2'; // Fixed html_writer namespace issue!

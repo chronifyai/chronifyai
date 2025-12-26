@@ -35,8 +35,8 @@ class wizard_step3_form extends \moodleform {
         $mform = $this->_form;
 
         // Privacy Warning - Prominent notice about data transmission.
-        $privacywarning = html_writer::div(
-            html_writer::tag('strong', get_string('privacy:setup:warning', 'local_chronifyai')) .
+        $privacywarning = \html_writer::div(
+            \html_writer::tag('strong', get_string('privacy:setup:warning', 'local_chronifyai')) .
             get_string('privacy:setup:requirements', 'local_chronifyai'),
             'alert alert-warning'
         );
