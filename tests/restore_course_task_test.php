@@ -182,6 +182,4 @@ final class restore_course_task_test extends advanced_testcase {
         $this->expectExceptionMessage('missingbackupid');
         $task->execute();
     }
-        $task->execute();
-    }
 }
