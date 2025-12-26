@@ -1,0 +1,11 @@
+{
+    "step": 1,
+    "step1_url": "https://example.com/step1",
+    "step2_url": "https://example.com/step2",
+    "step3_url": "https://example.com/step3",
+    "step4_url": "https://example.com/step4",
+    "step1_active": true,
+    "step2_active": false,
+    "step3_active": false,
+    "step4_active": false
+}
