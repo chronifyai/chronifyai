@@ -37,10 +37,24 @@
 .chronifyai-wizard-steps {
     display: flex;
     align-items: center;
-    gap: 0;
+    gap: 1rem;
 }
 
 .chronifyai-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.chronifyai-step:hover:not(.disabled) {
+    opacity: 0.8;
+}
+
+.chronifyai-step-number {
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -51,35 +65,41 @@
     justify-content: center;
     font-weight: 600;
     font-size: 1rem;
-    cursor: pointer;
     transition: all 0.3s ease;
-    border: none;
-    text-decoration: none;
 }
 
-.chronifyai-step:hover:not(.disabled) {
-    opacity: 0.8;
-}
-
-.chronifyai-step.active {
+.chronifyai-step.active .chronifyai-step-number {
     background: var(--chronifyai-primary);
     color: white;
     box-shadow: 0 0 0 3px rgba(17, 80, 76, 0.2);
 }
 
-.chronifyai-step.completed {
+.chronifyai-step.completed .chronifyai-step-number {
     background: var(--chronifyai-success);
     color: white;
+}
+
+.chronifyai-step-label {
+    font-size: 0.875rem;
+    color: #6c757d;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.chronifyai-step.active .chronifyai-step-label {
+    color: var(--chronifyai-primary);
+    font-weight: 600;
 }
 
 .chronifyai-step-check {
     font-weight: bold;
 }
 
-.chronifyai-step-line {
+.chronifyai-step-connector {
     width: 60px;
     height: 2px;
     background: #e9ecef;
+    margin: 0 0.5rem;
 }
 
 /* Main body content */
