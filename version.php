@@ -25,7 +25,7 @@
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'local_chronifyai';
-$plugin->version = 2025122700;  // YYYYMMDDXX format - Updated with fixes
+$plugin->version = 2025012700;  // YYYYMMDDXX format - Updated with fixes
 $plugin->requires = 2022041900; // Moodle 4.0
 $plugin->supported = [400, 403]; // Available as of Moodle 4.0, supports up to 4.3
 $plugin->maturity = MATURITY_STABLE;
