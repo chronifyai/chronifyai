@@ -25,6 +25,7 @@
 namespace local_chronifyai\privacy;
 
 use core_privacy\tests\provider_testcase;
+use core_privacy\local\metadata\collection;
 
 /**
  * Privacy provider tests for local_chronifyai.
@@ -33,12 +34,29 @@ use core_privacy\tests\provider_testcase;
  */
 final class provider_test extends provider_testcase {
     /**
-     * Test for provider::get_reason().
+     * Test that the plugin implements the metadata provider interface.
      *
-     * @covers ::get_reason
+     * @covers ::get_metadata
      */
-    public function test_get_reason(): void {
-        $reason = provider::get_reason();
-        $this->assertEquals('privacy:metadata', $reason);
+    public function test_get_metadata(): void {
+        $collection = new collection('local_chronifyai');
+        $result = provider::get_metadata($collection);
+        
+        $this->assertInstanceOf(collection::class, $result);
+        $this->assertNotEmpty($result->get_collection());
+    }
+
+    /**
+     * Test that contexts for a user are returned.
+     *
+     * @covers ::get_contexts_for_userid
+     */
+    public function test_get_contexts_for_userid(): void {
+        $this->resetAfterTest();
+        
+        $user = $this->getDataGenerator()->create_user();
+        $contextlist = provider::get_contexts_for_userid($user->id);
+        
+        $this->assertInstanceOf(\core_privacy\local\request\contextlist::class, $contextlist);
     }
 }

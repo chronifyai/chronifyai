@@ -56,7 +56,7 @@ class restore_course_task extends adhoc_task {
         $data = $this->get_custom_data();
         $courseid = $data->courseid;
         $backupid = $data->backupid;
-        $externaluserid = $data->externaluserid; // ChronifyAI app user ID.
+        $externaluserid = (int) $data->externaluserid; // ChronifyAI app user ID - cast to int.
         $userid = $this->get_userid(); // Get the Moodle user ID who created this task.
         $isnewcourse = $data->isnewcourse ?? false;
         $rawrestoreoptions = (array) ($data->restoreoptions ?? []);
