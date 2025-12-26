@@ -1,0 +1,2 @@
+# Ensure all template JSON files are tracked
+templates/*.json text

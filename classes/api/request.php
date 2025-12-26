@@ -59,7 +59,7 @@ final class request {
      *
      */
     public static function get(string $endpoint, array $params = []): stdClass {
-        return self::request('GET', $endpoint, $params);
+        return self::execute('GET', $endpoint, $params);
     }
 
     /**
@@ -73,7 +73,7 @@ final class request {
      *
      */
     public static function post(string $endpoint, array $data = [], array $attachments = []): stdClass {
-        return self::request('POST', $endpoint, $data, attachments: $attachments);
+        return self::execute('POST', $endpoint, $data, attachments: $attachments);
     }
 
     /**
@@ -85,7 +85,7 @@ final class request {
      * @throws moodle_exception If request fails
      */
     public static function put(string $endpoint, array $data = []): stdClass {
-        return self::request('PUT', $endpoint, $data);
+        return self::execute('PUT', $endpoint, $data);
     }
 
     /**
@@ -97,7 +97,7 @@ final class request {
      * @throws moodle_exception If request fails
      */
     public static function delete(string $endpoint, array $params = []): stdClass {
-        return self::request('DELETE', $endpoint, $params);
+        return self::execute('DELETE', $endpoint, $params);
     }
     /**
      * Make an API request with automatic authentication and retry handling.
@@ -115,7 +115,7 @@ final class request {
      * @throws moodle_exception If request fails or plugin is disabled
      *
      */
-    public static function request(
+    public static function execute(
         string $method,
         string $endpoint,
         array $data = [],
@@ -179,7 +179,7 @@ final class request {
             if (!$result->success && $result->is_retriable && $attempt < self::MAX_RETRY_ATTEMPTS) {
                 $delay = response_handler::get_retry_delay($result->status_code, $attempt);
                 sleep($delay);
-                return self::request($method, $endpoint, $data, $attempt + 1);
+                return self::execute($method, $endpoint, $data, $attempt + 1);
             }
 
             // If not successful and not retriable, throw an error.
@@ -590,7 +590,7 @@ final class request {
         // Retry if conditions are met.
         if ($shouldretry && $attempt < self::MAX_RETRY_ATTEMPTS) {
             sleep($delay);
-            return self::request($method, $endpoint, $data, $attempt + 1);
+            return self::execute($method, $endpoint, $data, $attempt + 1);
         }
 
         // Clean up tracking and throw the final error.

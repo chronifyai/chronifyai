@@ -75,7 +75,7 @@ class course_backup_test extends advanced_testcase {
         role_assign($roleid, $user->id, $context->id);
 
         // Test actual backup creation. (integration test style)
-        // Skip mocking the private method - test the public interface instead
+        // Skip mocking the private method - test the public interface instead.
         $result = $this->service->create_backup_for_upload($course->id, false, $user->id);
 
         // Verify that a stored file is returned.
@@ -102,7 +102,7 @@ class course_backup_test extends advanced_testcase {
         $context = \context_course::instance($course->id);
         role_assign($roleid, $user->id, $context->id);
 
-        // Test the backup creation
+        // Test the backup creation.
         $result = $this->service->create_backup_for_upload($course->id, $userdata, $user->id);
 
         // Verify file is returned.
@@ -118,12 +118,12 @@ class course_backup_test extends advanced_testcase {
         // Create a course.
         $course = $this->getDataGenerator()->create_course();
 
-        // Test that an exception is thrown. when no user ID provided
+        // Test that an exception is thrown when no user ID provided.
         $this->expectException(moodle_exception::class);
-        // Use expectExceptionMessage instead of expectExceptionStringContains
+        // Use expectExceptionMessage instead of expectExceptionStringContains.
         $this->expectExceptionMessage('User ID is required');
 
-        // Try to create backup. without user ID (empty value)
+        // Try to create backup without user ID (empty value).
         $this->service->create_backup_for_upload($course->id, true, null);
     }
 
@@ -135,12 +135,12 @@ class course_backup_test extends advanced_testcase {
         // Create a course.
         $course = $this->getDataGenerator()->create_course();
 
-        // Test that an exception is thrown. when zero user ID provided
+        // Test that an exception is thrown when zero user ID provided.
         $this->expectException(moodle_exception::class);
-        // Use expectExceptionMessage instead of expectExceptionStringContains
+        // Use expectExceptionMessage instead of expectExceptionStringContains.
         $this->expectExceptionMessage('User ID is required');
 
-        // Try to create backup. with zero user ID
+        // Try to create backup with zero user ID.
         $this->service->create_backup_for_upload($course->id, true, 0);
     }
 
@@ -149,10 +149,10 @@ class course_backup_test extends advanced_testcase {
      * @covers ::create_backup_for_upload
      */
     public function test_create_backup_for_upload_invalid_course(): void {
-        // Create a user
+        // Create a user.
         $user = $this->getDataGenerator()->create_user();
 
-        // Test that an exception is thrown. with invalid course ID
+        // Test that an exception is thrown with invalid course ID.
         $this->expectException(\Exception::class);
 
         $this->service->create_backup_for_upload(999999, true, $user->id);

@@ -56,7 +56,7 @@ final class restore_course_task_test extends advanced_testcase {
      * @covers ::execute
      */
     public function test_execute_fails_when_course_not_found(): void {
-        $this->resetDebugging(); // Reset debugging to allow debugging() calls in this test
+        $this->resetDebugging(); // Reset debugging to allow debugging() calls in this test.
 
         $user = $this->getDataGenerator()->create_user();
 
@@ -73,14 +73,14 @@ final class restore_course_task_test extends advanced_testcase {
         $task->set_custom_data($data);
         $task->set_userid($user->id);
 
-        // Expect exception - debugging calls will happen but we've reset debugging
+        // Expect exception - debugging calls will happen but we've reset debugging.
         $this->expectException(moodle_exception::class);
         $this->expectExceptionMessage('coursenotfound');
 
         try {
             $task->execute();
         } finally {
-            $this->resetDebugging(); // Clean up after test
+            $this->resetDebugging(); // Clean up after test.
         }
     }
 
@@ -95,7 +95,7 @@ final class restore_course_task_test extends advanced_testcase {
         $data = new stdClass();
         $data->courseid = $course->id;
         $data->backupid = 'backup-123';
-        $data->externaluserid = 456; // Integer
+        $data->externaluserid = 456; // Integer.
         $data->isnewcourse = false;
         $data->coursename = 'Test';
         $data->courseshortname = 'TST';
@@ -124,7 +124,7 @@ final class restore_course_task_test extends advanced_testcase {
         $data = new stdClass();
         $data->courseid = $course->id;
         $data->backupid = 'backup-123';
-        $data->externaluserid = 456; // Integer
+        $data->externaluserid = 456; // Integer.
         $data->isnewcourse = false;
 
         $task = new restore_course_task();
@@ -133,8 +133,8 @@ final class restore_course_task_test extends advanced_testcase {
 
         $retrieveddata = $task->get_custom_data();
 
-        // FIX: Use property_exists() instead of assertObjectHasProperty()
-        // assertObjectHasProperty() was deprecated in PHPUnit 9
+        // FIX: Use property_exists() instead of assertObjectHasProperty().
+        // assertObjectHasProperty() was deprecated in PHPUnit 9.
         $this->assertTrue(property_exists($retrieveddata, 'courseid'), 'courseid property missing');
         $this->assertTrue(property_exists($retrieveddata, 'backupid'), 'backupid property missing');
         $this->assertTrue(property_exists($retrieveddata, 'externaluserid'), 'externaluserid property missing');
