@@ -23,7 +23,7 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-namespace local_chronifyai\tests;
+namespace local_chronifyai;
 
 use advanced_testcase;
 use local_chronifyai\service\course_backup;

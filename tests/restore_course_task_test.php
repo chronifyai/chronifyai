@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
 
-namespace local_chronifyai\tests;
+namespace local_chronifyai;
 
 use advanced_testcase;
 use local_chronifyai\task\restore_course_task;
