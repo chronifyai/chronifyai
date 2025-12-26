@@ -216,3 +216,70 @@ $string['privacy:setup:requirements'] = 'Before enabling, ensure you have:<ul><l
 $string['acknowledge_data_transmission'] = 'I acknowledge external data transmission';
 $string['acknowledge_data_transmission_desc'] = 'I understand that enabling this plugin will transmit course data, student information, grades, and other data to ChronifyAI\'s external servers. I have reviewed applicable data protection regulations and have appropriate agreements in place.';
 $string['error:must_acknowledge'] = 'You must acknowledge the data transmission requirements before enabling the plugin.';
+
+// Wizard interface strings (Issue #6).
+$string['wizard:common:title'] = 'ChronifyAI Setup Wizard';
+$string['wizard:step1:title'] = 'Welcome to ChronifyAI';
+$string['wizard:step1:description'] = 'This wizard will guide you through the setup process for connecting your Moodle site to ChronifyAI. You will need your API credentials from the ChronifyAI dashboard.';
+$string['wizard:step4:title'] = 'Setup Complete!';
+$string['wizard:dashboard:url'] = 'https://app.chronifyai.com/dashboard';
+
+// Settings page strings (Issue #6).
+$string['settings:api:apibaseurl'] = 'API Base URL';
+$string['settings:api:apibaseurl_desc'] = 'The base URL for the ChronifyAI API endpoint. Default: https://api.chronifyai.com';
+$string['settings:authentication:clientid'] = 'Client ID';
+$string['settings:authentication:clientid_desc'] = 'Your ChronifyAI application client ID. You can find this in your ChronifyAI dashboard.';
+$string['settings:authentication:clientsecret'] = 'Client Secret';
+$string['settings:authentication:clientsecret_desc'] = 'Your ChronifyAI application client secret. Keep this secure and never share it publicly.';
+$string['settings:features:enabled'] = 'Enable ChronifyAI';
+$string['settings:features:enabled_desc'] = 'Enable or disable ChronifyAI functionality site-wide. When disabled, no data will be transmitted to ChronifyAI servers.';
+
+// Privacy and compliance strings (Issue #6).
+$string['acknowledge_data_transmission'] = 'I acknowledge data will be transmitted to external servers';
+$string['acknowledge_data_transmission_desc'] = 'By enabling this plugin, you acknowledge that student data, course content, and user information will be transmitted to ChronifyAI servers for processing. Ensure you have obtained appropriate consent from users, data processing agreements in place, reviewed PRIVACY.md documentation, and compliance with GDPR, FERPA, and local regulations.';
+$string['privacy:setup:requirements'] = 'Privacy & Compliance Requirements';
+$string['privacy:setup:warning'] = 'Before enabling this plugin, ensure you have reviewed all privacy implications and obtained necessary consents from users. See PRIVACY.md for complete details.';
+
+// UI component strings (Issue #6).
+$string['ui:button:save'] = 'Save';
+$string['ui:button:saveandnext'] = 'Save and Continue';
+$string['ui:button:saveandcomplete'] = 'Save and Complete Setup';
+
+// Error messages (Issue #6).
+$string['error:invalidurl'] = 'Invalid URL format. Please enter a valid HTTP or HTTPS URL.';
+$string['error:must_acknowledge'] = 'You must acknowledge the data transmission terms before enabling the plugin.';
+
+// Status messages (Issue #6).
+$string['status:settings:saved'] = 'Settings saved successfully';
+$string['status:course:found'] = 'Course found';
+$string['status:course:notfound'] = 'Course not found';
+
+// Instructor-related strings (Issue #4).
+$string['instructor:unknown'] = 'Unknown';
+
+// Task: Restore course strings (Issue #4).
+$string['task:restore:lockobtained'] = 'Obtained lock for restore operation';
+$string['task:restore:tempdircreated'] = 'Created temporary directory for backup file';
+$string['task:restore:downloading'] = 'Downloading backup file from ChronifyAI...';
+$string['task:restore:downloaded'] = 'Backup file downloaded successfully';
+$string['task:restore:filesize'] = 'File size: {$a}';
+$string['task:restore:preparingoptions'] = 'Preparing and validating restore options...';
+$string['task:restore:initializing'] = 'Initializing restore process...';
+$string['task:restore:backupcleanup'] = 'Temporary backup file cleaned up';
+$string['task:restore:errorcleanup'] = 'Temporary file cleaned up after error';
+$string['task:restore:lockreleased'] = 'Course restore lock released';
+
+// Task: Backup and upload strings (Issue #4).
+$string['task:backup:tempcleanup'] = 'Temporary backup file cleaned up';
+$string['task:backup:storedcleanup'] = 'Stored backup file cleaned up';
+$string['task:backup:errorcleanup'] = 'Temporary file cleaned up after error';
+
+// Service: Course restore strings (Issue #4).
+$string['service:restore:nameswarning'] = 'Warning: Could not update course names - keeping temporary names';
+$string['service:restore:warningsignored'] = 'Restore warnings (ignored): {$a}';
+$string['service:restore:continuingdespitewarnings'] = 'Continuing restore despite warnings...';
+$string['service:restore:errorsmessage'] = 'Errors: {$a}';
+
+// Task: Generate and upload report strings (Issue #4).
+$string['task:report:unexpectedformat'] = 'Unexpected response format';
+$string['task:report:unexpectederror'] = 'Unexpected error during report upload: {$a}';

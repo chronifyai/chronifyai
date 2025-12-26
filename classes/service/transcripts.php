@@ -161,7 +161,7 @@ class transcripts {
     private static function get_user_enrolled_courses(int $userid): array {
         global $DB;
 
-        $sql = "SELECT DISTINCT c.id, c.idnumber, c.fullname, c.shortname
+        $sql = "SELECT DISTINCT c.id, c.idnumber, c.fullname, c.shortname, c.timemodified
                   FROM {course} c
                   JOIN {enrol} e ON e.courseid = c.id
                   JOIN {user_enrolments} ue ON ue.enrolid = e.id

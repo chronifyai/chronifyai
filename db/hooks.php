@@ -15,18 +15,19 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Version information for local_chronifyai
+ * Hook callbacks registration for local_chronifyai.
  *
  * @package    local_chronifyai
- * @copyright  2025 SEBALE Innovations (http://sebale.net)
+ * @copyright  2025 ChronifyAI
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->component = 'local_chronifyai';
-$plugin->version = 2025122700;  // YYYYMMDDXX format - Updated with fixes
-$plugin->requires = 2022041900; // Moodle 4.0
-$plugin->supported = [400, 403]; // Available as of Moodle 4.0, supports up to 4.3
-$plugin->maturity = MATURITY_STABLE;
-$plugin->release = 'v1.2.0'; // Updated version with all fixes applied
+$callbacks = [
+    [
+        'hook' => \core\hook\output\before_footer_html_generation::class,
+        'callback' => [\local_chronifyai\hook_callbacks::class, 'before_footer'],
+        'priority' => 500,
+    ],
+];

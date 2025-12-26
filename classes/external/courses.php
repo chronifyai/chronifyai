@@ -207,7 +207,7 @@ class courses extends external_api {
             return trim($instructor->firstname . ' ' . $instructor->lastname);
         }
 
-        return 'Unknown';
+        return get_string('instructor:unknown', 'local_chronifyai');
     }
 
     /**

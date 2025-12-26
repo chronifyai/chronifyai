@@ -41,8 +41,8 @@ $step = max(1, min(4, $step)); // Ensure the step is between 1-4.
 // Set up the page.
 $pageurl = new moodle_url('/local/chronifyai/index.php', ['step' => $step]);
 $PAGE->set_url($pageurl);
-$PAGE->set_title(get_string('wizard:common:title', constants::PLUGIN_NAME));
-$PAGE->set_heading(get_string('wizard:common:title', constants::PLUGIN_NAME));
+$PAGE->set_title(get_string('wizard:common:title', 'local_chronifyai'));
+$PAGE->set_heading(get_string('wizard:common:title', 'local_chronifyai'));
 
 // Helper to get step URLs.
 $stepurls = [
@@ -51,6 +51,9 @@ $stepurls = [
     'step3_url' => new moodle_url('/local/chronifyai/index.php', ['step' => 3]),
     'step4_url' => new moodle_url('/local/chronifyai/index.php', ['step' => 4]),
 ];
+
+// Initialize form variable to avoid undefined variable error.
+$form = null;
 
 // Process form submissions based on the current step.
 switch ($step) {
@@ -68,10 +71,10 @@ switch ($step) {
 
             // Determine the next step based on which button was clicked.
             if (isset($formdata->next)) {
-                redirect($stepurls['step3_url'], get_string('status:settings:saved', constants::PLUGIN_NAME),
+                redirect($stepurls['step3_url'], get_string('status:settings:saved', 'local_chronifyai'),
                     null, \core\output\notification::NOTIFY_SUCCESS);
             } else {
-                redirect($pageurl, get_string('status:settings:saved', constants::PLUGIN_NAME),
+                redirect($pageurl, get_string('status:settings:saved', 'local_chronifyai'),
                     null, \core\output\notification::NOTIFY_SUCCESS);
             }
         }
@@ -89,10 +92,10 @@ switch ($step) {
 
             // Determine the next step based on which button was clicked.
             if (isset($formdata->next)) {
-                redirect($stepurls['step4_url'], get_string('status:settings:saved', constants::PLUGIN_NAME),
+                redirect($stepurls['step4_url'], get_string('status:settings:saved', 'local_chronifyai'),
                     null, \core\output\notification::NOTIFY_SUCCESS);
             } else {
-                redirect($pageurl, get_string('status:settings:saved', constants::PLUGIN_NAME),
+                redirect($pageurl, get_string('status:settings:saved', 'local_chronifyai'),
                     null, \core\output\notification::NOTIFY_SUCCESS);
             }
         }
@@ -130,8 +133,8 @@ switch ($step) {
 
     case 4:
         $stepdata = [
-            'step_title' => get_string('wizard:step4:title', constants::PLUGIN_NAME),
-            'dashboard_url' => get_string('wizard:dashboard:url', constants::PLUGIN_NAME),
+            'step_title' => get_string('wizard:step4:title', 'local_chronifyai'),
+            'dashboard_url' => get_string('wizard:dashboard:url', 'local_chronifyai'),
             'settings_url' => new moodle_url('/admin/settings.php', ['section' => 'local_chronifyai']),
         ];
         $content = $OUTPUT->render_from_template('local_chronifyai/wizard_step4', $stepdata);
