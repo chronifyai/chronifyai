@@ -25,8 +25,8 @@
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'local_chronifyai';
-$plugin->version = 2025012724; // YYYYMMDDXX format.
+$plugin->version = 2025012725; // YYYYMMDDXX format.
 $plugin->requires = 2022041900;
 $plugin->supported = [400, 403];
 $plugin->maturity = MATURITY_STABLE;
-$plugin->release = 'v2.0.8'; // Fixed Title Case to sentence case!
+$plugin->release = 'v2.0.9'; // Fixed CI issues!

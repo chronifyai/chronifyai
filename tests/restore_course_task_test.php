@@ -75,7 +75,7 @@ final class restore_course_task_test extends advanced_testcase {
 
         // Expect exception - debugging calls will happen but we've reset debugging.
         $this->expectException(moodle_exception::class);
-        $this->expectExceptionMessage('coursenotfound');
+        $this->expectExceptionMessage('Course not found');
 
         try {
             $task->execute();
