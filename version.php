@@ -25,8 +25,8 @@
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'local_chronifyai';
-$plugin->version = 2025012728; // YYYYMMDDXX format.
+$plugin->version = 2025012729; // YYYYMMDDXX format.
 $plugin->requires = 2022041900;
 $plugin->supported = [400, 403];
 $plugin->maturity = MATURITY_STABLE;
-$plugin->release = 'v2.1.2'; // CSS duplicate selector fixed!
+$plugin->release = 'v2.1.3'; // Gruntfile with amd task!
