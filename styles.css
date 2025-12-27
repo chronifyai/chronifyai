@@ -208,11 +208,6 @@
     outline-offset: 2px;
 }
 
-/* Form styles */
-.chronifyai-form-container {
-    width: 100%;
-}
-
 .chronifyai-form-title {
     font-size: 2.5rem;
     font-weight: 700;
