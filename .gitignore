@@ -1,3 +1,0 @@
-# Moodle will regenerate these during grunt build
-amd/build/*.min.js
-amd/build/*.min.js.map
