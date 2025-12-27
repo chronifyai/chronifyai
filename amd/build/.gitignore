@@ -1,3 +1,2 @@
-*.min.js
-  *.min.js.map
-  !.gitignore
+amd/build/*.min.js
+amd/build/*.min.js.map
