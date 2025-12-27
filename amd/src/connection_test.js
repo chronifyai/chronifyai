@@ -22,6 +22,7 @@
  */
 
 import Notification from 'core/notification';
+import {get_string as getString} from 'core/str';
 import {verifyConnection} from "./repository";
 
 /**
@@ -62,19 +63,22 @@ const handleTestConnection = async(button) => {
 
     // Validate inputs.
     if (!apiBaseUrl || !clientId || !clientSecret) {
-        showResult(resultContainer, false, 'All fields are required for connection testing.');
+        const errorMsg = await getString('connection:test:allfieldsrequired', 'local_chronifyai');
+        showResult(resultContainer, false, errorMsg);
         return;
     }
 
     // Show loading state.
     button.disabled = true;
     const originalText = button.textContent;
-    button.textContent = 'Testing...';
+    const testingText = await getString('connection:test:testing', 'local_chronifyai');
+    button.textContent = testingText;
 
     // Show loading message.
     resultContainer.classList.remove('success', 'error');
     resultContainer.classList.add('loading');
-    resultContainer.innerHTML = '<span class="icon">⏳</span> Testing connection...'; // TODO: use language strings.
+    const loadingMsg = await getString('connection:test:inprogress', 'local_chronifyai');
+    resultContainer.innerHTML = '<span class="icon">⏳</span> ' + loadingMsg;
 
     try {
         // Call the repository function.
@@ -84,7 +88,8 @@ const handleTestConnection = async(button) => {
         showResult(resultContainer, result.success, result.message);
     } catch (error) {
         // Show error notification.
-        showResult(resultContainer, false, 'An unexpected error occurred: ' + error.message);
+        const unexpectedError = await getString('connection:test:unexpectederror', 'local_chronifyai');
+        showResult(resultContainer, false, unexpectedError + ': ' + error.message);
         await Notification.exception(error);
     } finally {
         // Reset button state.
