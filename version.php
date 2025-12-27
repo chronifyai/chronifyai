@@ -25,8 +25,8 @@
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'local_chronifyai';
-$plugin->version = 2025012725; // YYYYMMDDXX format.
+$plugin->version = 2025012726; // YYYYMMDDXX format.
 $plugin->requires = 2022041900;
 $plugin->supported = [400, 403];
 $plugin->maturity = MATURITY_STABLE;
-$plugin->release = 'v2.0.9'; // Fixed CI issues!
+$plugin->release = 'v2.1.0'; // Grunt config files added!
