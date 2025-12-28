@@ -25,8 +25,8 @@
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'local_chronifyai';
-$plugin->version = 2025012803; // YYYYMMDDXX format.
+$plugin->version = 2025012804; // YYYYMMDDXX format.
 $plugin->requires = 2022041900;
 $plugin->supported = [400, 403];
 $plugin->maturity = MATURITY_STABLE;
-$plugin->release = 'v3.0.3'; // Fixed Issue #8 - undefined capability!
+$plugin->release = 'v3.0.4'; // Fixed Issue #9 - Use Moodle File API!

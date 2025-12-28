@@ -47,13 +47,24 @@ class ndjson implements exporter {
      * @throws moodle_exception If export fails
      */
     public function export_to_file($data, string $filepath): string {
+        global $CFG;
+        
         // Validate data structure.
         $this->validate_data($data);
 
-        // Ensure directory exists.
+        // Use Moodle's temp directory API.
+        $tempdir = make_temp_directory('chronifyai');
+        
+        // If filepath is not in temp directory, ensure it's in a safe location.
+        if (strpos($filepath, $CFG->tempdir) !== 0 && strpos($filepath, $CFG->dataroot) !== 0) {
+            // Move to temp directory.
+            $filepath = $tempdir . '/' . basename($filepath);
+        }
+
+        // Ensure directory exists using Moodle API.
         $directory = dirname($filepath);
         if (!is_dir($directory)) {
-            if (!mkdir($directory, 0755, true)) {
+            if (!check_dir_exists($directory, true, true)) {
                 throw new moodle_exception('error:export:cannotcreatedirectory', 'local_chronifyai', '', null, $directory);
             }
         }

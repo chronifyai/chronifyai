@@ -294,10 +294,17 @@ final class request {
      * @throws moodle_exception If download fails
      */
     public static function download_file(string $endpoint, string $savepath, array $params = []): bool {
-        // Ensure directory exists.
+        global $CFG;
+        
+        // Ensure we're using Moodle's temp directory.
+        $tempdir = make_temp_directory('chronifyai');
+        
+        // Ensure directory exists using Moodle API.
         $directory = dirname($savepath);
-        if (!is_dir($directory) && !mkdir($directory, 0755, true)) {
-            throw new moodle_exception('error:dir:createfailed', constants::PLUGIN_NAME, '', null, $directory);
+        if (!is_dir($directory)) {
+            if (!check_dir_exists($directory, true, true)) {
+                throw new moodle_exception('error:dir:createfailed', constants::PLUGIN_NAME, '', null, $directory);
+            }
         }
 
         $tempfile = $savepath . '.tmp';
