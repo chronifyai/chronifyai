@@ -22,7 +22,38 @@
  */
 
 import Notification from 'core/notification';
+import {getString} from 'core/str';
 import {verifyConnection} from "./repository";
+
+// Cache for loaded strings.
+let strings = null;
+
+/**
+ * Load all required strings at once.
+ *
+ * @returns {Promise} Promise resolved with strings object
+ */
+const loadStrings = async() => {
+    if (strings === null) {
+        const stringKeys = [
+            {key: 'connection:test:fieldsrequired', component: 'local_chronifyai'},
+            {key: 'connection:test:testing', component: 'local_chronifyai'},
+            {key: 'connection:test:inprogress', component: 'local_chronifyai'},
+            {key: 'connection:test:unexpectederror', component: 'local_chronifyai'},
+        ];
+
+        const loadedStrings = await getString(stringKeys);
+
+        strings = {
+            fieldsRequired: loadedStrings[0],
+            testing: loadedStrings[1],
+            inProgress: loadedStrings[2],
+            unexpectedError: loadedStrings[3],
+        };
+    }
+
+    return strings;
+};
 
 /**
  * Initialize the connection test functionality.
@@ -48,6 +79,9 @@ export const init = (buttonSelector = '#test-connection-btn') => {
  * @param {HTMLElement} button The test connection button
  */
 const handleTestConnection = async(button) => {
+    // Load strings first.
+    const strs = await loadStrings();
+
     // Get form values.
     const apiBaseUrl = document.querySelector('input[name="api_base_url"]')?.value || '';
     const clientId = document.querySelector('input[name="client_id"]')?.value || '';
@@ -62,19 +96,19 @@ const handleTestConnection = async(button) => {
 
     // Validate inputs.
     if (!apiBaseUrl || !clientId || !clientSecret) {
-        showResult(resultContainer, false, 'All fields are required for connection testing.');
+        showResult(resultContainer, false, strs.fieldsRequired);
         return;
     }
 
     // Show loading state.
     button.disabled = true;
     const originalText = button.textContent;
-    button.textContent = 'Testing...';
+    button.textContent = strs.testing;
 
     // Show loading message.
     resultContainer.classList.remove('success', 'error');
     resultContainer.classList.add('loading');
-    resultContainer.innerHTML = '<span class="icon">⏳</span> Testing connection...';
+    resultContainer.innerHTML = '<span class="icon">⏳</span> ' + escapeHtml(strs.inProgress);
 
     try {
         // Call the repository function.
@@ -84,7 +118,7 @@ const handleTestConnection = async(button) => {
         showResult(resultContainer, result.success, result.message);
     } catch (error) {
         // Show error notification.
-        showResult(resultContainer, false, 'An unexpected error occurred: ' + error.message);
+        showResult(resultContainer, false, strs.unexpectedError + ': ' + error.message);
         await Notification.exception(error);
     } finally {
         // Reset button state.

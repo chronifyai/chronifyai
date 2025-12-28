@@ -25,8 +25,8 @@
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'local_chronifyai';
-$plugin->version = 2025012808; // YYYYMMDDXX format.
+$plugin->version = 2025012810; // YYYYMMDDXX format.
 $plugin->requires = 2022041900;
 $plugin->supported = [400, 403];
 $plugin->maturity = MATURITY_STABLE;
-$plugin->release = 'v3.1.2'; // Fixed all CodeSniffer issues!
+$plugin->release = 'v4.0.0'; // Proper getString() implementation - NO hardcoded strings!

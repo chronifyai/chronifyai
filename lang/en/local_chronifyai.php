@@ -313,3 +313,15 @@ $string['cachedef_apitoken'] = 'ChronifyAI API authentication tokens';
 
 // Plugin status.
 $string['status:plugin:disabled'] = 'Plugin is currently disabled';
+
+// Connection test strings.
+$string['connection:test:fieldsrequired'] = 'All fields are required for connection testing';
+$string['connection:test:testing'] = 'Testing...';
+$string['connection:test:inprogress'] = 'Testing connection...';
+$string['connection:test:unexpectederror'] = 'An unexpected error occurred';
+
+// Connection test strings (Issue #4 - proper getString() implementation).
+$string['connection:test:fieldsrequired'] = 'All fields are required for connection testing';
+$string['connection:test:testing'] = 'Testing...';
+$string['connection:test:inprogress'] = 'Testing connection...';
+$string['connection:test:unexpectederror'] = 'An unexpected error occurred';
