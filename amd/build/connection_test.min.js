@@ -16,44 +16,15 @@
 /**
  * Connection test module for ChronifyAI configuration wizard.
  *
+ * Uses icons for visual feedback and backend messages for localized text.
+ *
  * @module     local_chronifyai/connection_test
  * @copyright  2025 SEBALE Innovations (http://sebale.net)
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 import Notification from 'core/notification';
-import {getString} from 'core/str';
 import {verifyConnection} from "./repository";
-
-// Cache for loaded strings.
-let strings = null;
-
-/**
- * Load all required strings at once.
- *
- * @returns {Promise} Promise resolved with strings object
- */
-const loadStrings = async() => {
-    if (strings === null) {
-        const stringKeys = [
-            {key: 'connection:test:fieldsrequired', component: 'local_chronifyai'},
-            {key: 'connection:test:testing', component: 'local_chronifyai'},
-            {key: 'connection:test:inprogress', component: 'local_chronifyai'},
-            {key: 'connection:test:unexpectederror', component: 'local_chronifyai'},
-        ];
-
-        const loadedStrings = await getString(stringKeys);
-
-        strings = {
-            fieldsRequired: loadedStrings[0],
-            testing: loadedStrings[1],
-            inProgress: loadedStrings[2],
-            unexpectedError: loadedStrings[3],
-        };
-    }
-
-    return strings;
-};
 
 /**
  * Initialize the connection test functionality.
@@ -79,9 +50,6 @@ export const init = (buttonSelector = '#test-connection-btn') => {
  * @param {HTMLElement} button The test connection button
  */
 const handleTestConnection = async(button) => {
-    // Load strings first.
-    const strs = await loadStrings();
-
     // Get form values.
     const apiBaseUrl = document.querySelector('input[name="api_base_url"]')?.value || '';
     const clientId = document.querySelector('input[name="client_id"]')?.value || '';
@@ -94,36 +62,39 @@ const handleTestConnection = async(button) => {
         return;
     }
 
-    // Validate inputs.
+    // Validate inputs - show warning icon if empty.
     if (!apiBaseUrl || !clientId || !clientSecret) {
-        showResult(resultContainer, false, strs.fieldsRequired);
+        resultContainer.classList.remove('success', 'error', 'loading');
+        resultContainer.classList.add('error');
+        resultContainer.innerHTML = '<span class="icon" role="img" aria-label="Warning">⚠️</span>';
         return;
     }
 
     // Show loading state.
     button.disabled = true;
-    const originalText = button.textContent;
-    button.textContent = strs.testing;
 
-    // Show loading message.
+    // Show loading icon.
     resultContainer.classList.remove('success', 'error');
     resultContainer.classList.add('loading');
-    resultContainer.innerHTML = '<span class="icon">⏳</span> ' + escapeHtml(strs.inProgress);
+    resultContainer.innerHTML = '<span class="icon" role="img" aria-label="Loading">⏳</span>';
 
     try {
         // Call the repository function.
         const result = await verifyConnection(apiBaseUrl, clientId, clientSecret);
 
-        // Show result.
+        // Show result with backend message (properly localized).
         showResult(resultContainer, result.success, result.message);
     } catch (error) {
-        // Show error notification.
-        showResult(resultContainer, false, strs.unexpectedError + ': ' + error.message);
+        // Show error icon.
+        resultContainer.classList.remove('loading', 'success');
+        resultContainer.classList.add('error');
+        resultContainer.innerHTML = '<span class="icon" role="img" aria-label="Error">✗</span>';
+
+        // Show error notification with details.
         await Notification.exception(error);
     } finally {
         // Reset button state.
         button.disabled = false;
-        button.textContent = originalText;
     }
 };
 
@@ -132,7 +103,7 @@ const handleTestConnection = async(button) => {
  *
  * @param {HTMLElement} container The result container element
  * @param {boolean} success Whether the test was successful
- * @param {string} message The result message
+ * @param {string} message The result message (from backend, localized)
  */
 const showResult = (container, success, message) => {
     // Remove all state classes.
@@ -143,9 +114,10 @@ const showResult = (container, success, message) => {
 
     // Set icon based on success/failure.
     const icon = success ? '✓' : '✗';
+    const ariaLabel = success ? 'Success' : 'Error';
 
-    // Update content.
-    container.innerHTML = `<span class="icon">${icon}</span> ${escapeHtml(message)}`;
+    // Update content with icon + backend message.
+    container.innerHTML = `<span class="icon" role="img" aria-label="${ariaLabel}">${icon}</span> ${escapeHtml(message)}`;
 };
 
 /**

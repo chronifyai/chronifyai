@@ -219,12 +219,8 @@ $string['wizard:step4:step2'] = 'Set up automated archiving rules for your cours
 $string['wizard:step4:step3'] = 'Review privacy and compliance settings';
 $string['wizard:step4:support:text'] = 'Need help? Contact us at';
 $string['wizard:step4:title'] = 'Setup Complete and You\'re Connected!';
-$string['connection:test:allfieldsrequired'] = 'All fields are required for connection testing.';
-$string['connection:test:inprogress'] = 'Testing connection...';
 $string['connection:test:invalidurlformat'] = 'Invalid API URL format. Please provide a valid URL.';
 $string['connection:test:success'] = 'Connection successful! Authentication and API access verified.';
-$string['connection:test:testing'] = 'Testing...';
-$string['connection:test:unexpectederror'] = 'An unexpected error occurred';
 $string['connection:test:configerror'] = 'Configuration error. Please verify all settings are correct.';
 $string['connection:test:authfailed'] = 'Authentication failed. Please check your Client ID and Client Secret.';
 $string['connection:test:approvalrequired'] = 'Approval required. Please check your email and approve the integration in ChronifyAI admin panel.';
@@ -315,13 +311,5 @@ $string['cachedef_apitoken'] = 'ChronifyAI API authentication tokens';
 $string['status:plugin:disabled'] = 'Plugin is currently disabled';
 
 // Connection test strings.
-$string['connection:test:fieldsrequired'] = 'All fields are required for connection testing';
-$string['connection:test:testing'] = 'Testing...';
-$string['connection:test:inprogress'] = 'Testing connection...';
-$string['connection:test:unexpectederror'] = 'An unexpected error occurred';
 
 // Connection test strings (Issue #4 - proper getString() implementation).
-$string['connection:test:fieldsrequired'] = 'All fields are required for connection testing';
-$string['connection:test:testing'] = 'Testing...';
-$string['connection:test:inprogress'] = 'Testing connection...';
-$string['connection:test:unexpectederror'] = 'An unexpected error occurred';
