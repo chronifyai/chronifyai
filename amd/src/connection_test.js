@@ -128,4 +128,5 @@ const showResult = (container, success, message) => {
 const escapeHtml = (text) => {
     const div = document.createElement('div');
     div.textContent = text;
-    return div.innerHTML};
+    return div.innerHTML;
+};

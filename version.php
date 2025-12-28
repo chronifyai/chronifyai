@@ -25,8 +25,8 @@
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'local_chronifyai';
-$plugin->version = 2025012737; // YYYYMMDDXX format.
+$plugin->version = 2025012738; // YYYYMMDDXX format.
 $plugin->requires = 2022041900;
 $plugin->supported = [400, 403];
 $plugin->maturity = MATURITY_STABLE;
-$plugin->release = 'v2.5.0'; // Disable ignorefiles check!
+$plugin->release = 'v2.5.1'; // Fixed JavaScript syntax error!
