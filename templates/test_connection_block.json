@@ -1,9 +1,0 @@
-{
-    "examples": [
-        {
-            "testurl": "/local/chronifyai/test.php",
-            "status": "success",
-            "message": "Connection successful"
-        }
-    ]
-}

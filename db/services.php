@@ -25,16 +25,6 @@
 defined('MOODLE_INTERNAL') || die();
 
 $functions = [
-    // INTERNAL FUNCTIONS.
-    'local_chronifyai_verify_connection' => [
-        'classname'       => \local_chronifyai\external\connection::class,
-        'methodname'      => 'verify',
-        'description'     => 'Verify connection to the ChronifyAI API',
-        'type'            => 'write',
-        'ajax'            => true,
-        'readonlysession' => true,
-    ],
-
     // IMMEDIATE DATA RETRIEVAL.
     'local_chronifyai_get_courses_list' => [
         'classname'       => \local_chronifyai\external\courses::class,

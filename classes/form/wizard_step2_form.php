@@ -61,9 +61,6 @@ class wizard_step2_form extends \moodleform {
         $mform->addHelpButton('client_secret', 'settings:authentication:clientsecret', constants::PLUGIN_NAME);
         $mform->setDefault('client_secret', config::get_client_secret() ?? '');
 
-        // Test connection block.
-        $mform->addElement('html', $this->render_test_connection_block());
-
         // Action buttons.
         $buttonarray = [];
         $buttonarray[] = $mform->createElement('submit', 'save', get_string('ui:button:save', constants::PLUGIN_NAME));
@@ -83,16 +80,5 @@ class wizard_step2_form extends \moodleform {
         }
 
         return $errors;
-    }
-
-    /**
-     * Render test connection block from template.
-     *
-     * @return string Rendered HTML.
-     * @throws moodle_exception
-     */
-    private function render_test_connection_block(): string {
-        global $OUTPUT;
-        return $OUTPUT->render_from_template('local_chronifyai/test_connection_block', []);
     }
 }

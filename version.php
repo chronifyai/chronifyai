@@ -25,8 +25,8 @@
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'local_chronifyai';
-$plugin->version = 2025012812; // YYYYMMDDXX format.
+$plugin->version = 2025012813; // YYYYMMDDXX format.
 $plugin->requires = 2022041900;
 $plugin->supported = [400, 403];
 $plugin->maturity = MATURITY_STABLE;
-$plugin->release = 'v4.1.0'; // Icons for connection test - NO hardcoded strings!
+$plugin->release = 'v5.0.0'; // Connection test removed - production ready!
