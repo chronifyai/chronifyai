@@ -89,7 +89,7 @@ $functions = [
         'methodname'   => 'initiate_transcripts_export',
         'description'  => 'Queue a task to export user transcripts to ChronifyAI',
         'type'         => 'write',
-        'capabilities' => 'local/chronifyai:useservice,moodle/user:viewprofile,moodle/grade:view',
+        'capabilities' => 'local/chronifyai:useservice,moodle/user:viewdetails,moodle/grade:view',
     ],
 ];
 

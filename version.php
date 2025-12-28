@@ -25,8 +25,8 @@
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'local_chronifyai';
-$plugin->version = 2025012802; // YYYYMMDDXX format.
+$plugin->version = 2025012803; // YYYYMMDDXX format.
 $plugin->requires = 2022041900;
 $plugin->supported = [400, 403];
 $plugin->maturity = MATURITY_STABLE;
-$plugin->release = 'v3.0.2'; // Cleaned duplicates, verified all strings!
+$plugin->release = 'v3.0.3'; // Fixed Issue #8 - undefined capability!
