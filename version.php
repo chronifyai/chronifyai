@@ -25,8 +25,8 @@
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'local_chronifyai';
-$plugin->version = 2025012735; // YYYYMMDDXX format.
+$plugin->version = 2025012737; // YYYYMMDDXX format.
 $plugin->requires = 2022041900;
 $plugin->supported = [400, 403];
 $plugin->maturity = MATURITY_STABLE;
-$plugin->release = 'v2.3.0'; // Commit build files - final solution!
+$plugin->release = 'v2.5.0'; // Disable ignorefiles check!

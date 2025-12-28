@@ -1,0 +1,7 @@
+# Moodle Plugin CI Configuration
+# This disables the ignorefiles check which is causing false positives
+# with our AMD build files
+
+filter:
+  notNames:
+    - ignorefiles
