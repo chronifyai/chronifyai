@@ -28,8 +28,8 @@ use core_external\external_api;
 use core_external\external_function_parameters;
 use core_external\external_single_structure;
 use core_external\external_value;
-use local_chronifyai\api\auth;
-use local_chronifyai\api\client;
+use local_chronifyai\local\api\auth;
+use local_chronifyai\local\api\client;
 
 /**
  * External API for testing ChronifyAI API connection.

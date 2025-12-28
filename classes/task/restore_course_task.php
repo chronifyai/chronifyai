@@ -19,10 +19,10 @@ namespace local_chronifyai\task;
 use coding_exception;
 use core\task\adhoc_task;
 use core\lock\lock_config;
-use local_chronifyai\api\client;
-use local_chronifyai\service\course_restore;
-use local_chronifyai\service\notification;
-use local_chronifyai\service\restore_data_preparer;
+use local_chronifyai\local\api\client;
+use local_chronifyai\local\service\course_restore;
+use local_chronifyai\local\service\notification;
+use local_chronifyai\local\service\restore_data_preparer;
 use moodle_exception;
 
 /**

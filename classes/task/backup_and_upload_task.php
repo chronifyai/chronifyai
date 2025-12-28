@@ -18,9 +18,9 @@ namespace local_chronifyai\task;
 
 use core\task\adhoc_task;
 use Exception;
-use local_chronifyai\api\client;
-use local_chronifyai\service\course_backup;
-use local_chronifyai\service\notification;
+use local_chronifyai\local\api\client;
+use local_chronifyai\local\service\course_backup;
+use local_chronifyai\local\service\notification;
 use moodle_exception;
 
 /**

@@ -24,7 +24,7 @@ use core_external\external_single_structure;
 use core_external\external_value;
 use Exception;
 use invalid_parameter_exception;
-use local_chronifyai\service\restore_validator;
+use local_chronifyai\local\service\restore_validator;
 use local_chronifyai\task\backup_and_upload_task;
 use moodle_exception;
 use local_chronifyai\task\restore_course_task;

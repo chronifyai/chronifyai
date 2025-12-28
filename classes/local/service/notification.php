@@ -14,9 +14,9 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-namespace local_chronifyai\service;
+namespace local_chronifyai\local\service;
 
-use local_chronifyai\api\client;
+use local_chronifyai\local\api\client;
 use local_chronifyai\constants;
 
 /**

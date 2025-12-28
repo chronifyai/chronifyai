@@ -24,7 +24,7 @@ use core_external\external_single_structure;
 use core_external\external_value;
 use Exception;
 use invalid_parameter_exception;
-use local_chronifyai\api\api_helper;
+use local_chronifyai\local\api\api_helper;
 use local_chronifyai\task\generate_and_upload_report_task;
 use moodle_exception;
 

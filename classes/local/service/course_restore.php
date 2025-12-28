@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
 
-namespace local_chronifyai\service;
+namespace local_chronifyai\local\service;
 
 defined('MOODLE_INTERNAL') || die;
 
