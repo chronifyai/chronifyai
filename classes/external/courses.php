@@ -195,12 +195,13 @@ class courses extends external_api {
              WHERE ctx.contextlevel = :contextlevel
              AND ctx.instanceid = :courseid
              AND r.shortname IN ('editingteacher', 'teacher')
-             ORDER BY ra.timemodified ASC
-             LIMIT 1",
+             ORDER BY ra.timemodified ASC",
             [
                 'contextlevel' => CONTEXT_COURSE,
                 'courseid' => $courseid,
-            ]
+            ],
+            0,  // limitfrom
+            1   // limitnum - get only 1 record
         );
 
         if ($instructor && $instructor->firstname && $instructor->lastname) {

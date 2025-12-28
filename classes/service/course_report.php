@@ -604,9 +604,20 @@ class course_report {
         // Get data for the last 4 weeks.
         $fourweeksago = time() - (4 * 7 * 24 * 60 * 60);
 
+        // Use database-agnostic date conversion.
+        // PostgreSQL: to_timestamp(), MySQL: FROM_UNIXTIME()
+        $dbfamily = $DB->get_dbfamily();
+        
+        if ($dbfamily === 'postgres') {
+            $dateconv = "DATE(to_timestamp(timecreated))";
+        } else {
+            // MySQL/MariaDB
+            $dateconv = "DATE(FROM_UNIXTIME(timecreated))";
+        }
+
         // Count unique days with course access.
         $uniquedays = $DB->count_records_sql(
-            "SELECT COUNT(DISTINCT DATE(FROM_UNIXTIME(timecreated))) as days
+            "SELECT COUNT(DISTINCT $dateconv) as days
              FROM {logstore_standard_log}
              WHERE userid = :userid
                AND courseid = :courseid
@@ -621,14 +632,14 @@ class course_report {
 
         // Get actual session data.
         $sessions = $DB->get_records_sql(
-            "SELECT DATE(FROM_UNIXTIME(timecreated)) as day,
+            "SELECT $dateconv as day,
                     COUNT(*) as actions,
                     MAX(timecreated) - MIN(timecreated) as duration
              FROM {logstore_standard_log}
              WHERE userid = :userid
                AND courseid = :courseid
                AND timecreated > :timestart
-             GROUP BY DATE(FROM_UNIXTIME(timecreated))
+             GROUP BY $dateconv
              ORDER BY day",
             [
                 'userid' => $userid,

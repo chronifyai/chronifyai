@@ -408,7 +408,7 @@ class transcripts {
                          WHERE userid = :userid
                            AND courseid = :courseid
                            AND timecreated >= :timefilter
-                         LIMIT 10000
+                         ORDER BY timecreated
                       ) as timedeltas";
 
             $params = [
@@ -417,7 +417,8 @@ class transcripts {
                 'timefilter' => $twoyearsago,
             ];
 
-            $result = $DB->get_record_sql($sql, $params);
+            // Use set_limit_params for the outer query
+            $result = $DB->get_record_sql($sql, $params, IGNORE_MULTIPLE);
 
             if ($result && $result->total_duration > 0) {
                 return round($result->total_duration / 3600, 2); // Convert to hours.
@@ -429,8 +430,7 @@ class transcripts {
                       FROM {logstore_standard_log}
                      WHERE userid = :userid
                        AND courseid = :courseid
-                       AND timecreated >= :timefilter
-                     LIMIT 10000";
+                       AND timecreated >= :timefilter";
 
             $params = [
                 'userid' => $userid,
