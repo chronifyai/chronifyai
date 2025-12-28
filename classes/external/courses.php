@@ -200,8 +200,8 @@ class courses extends external_api {
                 'contextlevel' => CONTEXT_COURSE,
                 'courseid' => $courseid,
             ],
-            0,  // limitfrom
-            1   // limitnum - get only 1 record
+            0, // Limitfrom.
+            1 // Limitnum - get only 1 record.
         );
 
         if ($instructor && $instructor->firstname && $instructor->lastname) {

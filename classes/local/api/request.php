@@ -295,10 +295,10 @@ final class request {
      */
     public static function download_file(string $endpoint, string $savepath, array $params = []): bool {
         global $CFG;
-        
+
         // Ensure we're using Moodle's temp directory.
         $tempdir = make_temp_directory('chronifyai');
-        
+
         // Ensure directory exists using Moodle API.
         $directory = dirname($savepath);
         if (!is_dir($directory)) {

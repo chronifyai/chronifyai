@@ -26,7 +26,7 @@
 namespace local_chronifyai;
 
 use advanced_testcase;
-use local_chronifyai\service\course_backup;
+use local_chronifyai\local\service\course_backup;
 use backup_controller;
 use stored_file;
 use backup_plan;
@@ -40,7 +40,7 @@ use moodle_exception;
  * @category   test
  * @copyright  2025 SEBALE Innovations (http://sebale.net)
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- * @coversDefaultClass \local_chronifyai\service\course_backup
+ * @coversDefaultClass \local_chronifyai\local\service\course_backup
  */
 class course_backup_test extends advanced_testcase {
     /**

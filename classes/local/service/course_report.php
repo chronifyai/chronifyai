@@ -605,13 +605,13 @@ class course_report {
         $fourweeksago = time() - (4 * 7 * 24 * 60 * 60);
 
         // Use database-agnostic date conversion.
-        // PostgreSQL: to_timestamp(), MySQL: FROM_UNIXTIME()
+        // PostgreSQL: to_timestamp(), MySQL: FROM_UNIXTIME().
         $dbfamily = $DB->get_dbfamily();
-        
+
         if ($dbfamily === 'postgres') {
             $dateconv = "DATE(to_timestamp(timecreated))";
         } else {
-            // MySQL/MariaDB
+            // MySQL/MariaDB.
             $dateconv = "DATE(FROM_UNIXTIME(timecreated))";
         }
 

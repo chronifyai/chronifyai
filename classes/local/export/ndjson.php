@@ -48,13 +48,13 @@ class ndjson implements exporter {
      */
     public function export_to_file($data, string $filepath): string {
         global $CFG;
-        
+
         // Validate data structure.
         $this->validate_data($data);
 
         // Use Moodle's temp directory API.
         $tempdir = make_temp_directory('chronifyai');
-        
+
         // If filepath is not in temp directory, ensure it's in a safe location.
         if (strpos($filepath, $CFG->tempdir) !== 0 && strpos($filepath, $CFG->dataroot) !== 0) {
             // Move to temp directory.

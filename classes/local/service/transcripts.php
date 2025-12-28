@@ -417,7 +417,7 @@ class transcripts {
                 'timefilter' => $twoyearsago,
             ];
 
-            // Use set_limit_params for the outer query
+            // Use set_limit_params for the outer query.
             $result = $DB->get_record_sql($sql, $params, IGNORE_MULTIPLE);
 
             if ($result && $result->total_duration > 0) {

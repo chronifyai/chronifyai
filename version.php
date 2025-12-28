@@ -25,8 +25,8 @@
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'local_chronifyai';
-$plugin->version = 2025012806; // YYYYMMDDXX format.
+$plugin->version = 2025012808; // YYYYMMDDXX format.
 $plugin->requires = 2022041900;
 $plugin->supported = [400, 403];
 $plugin->maturity = MATURITY_STABLE;
-$plugin->release = 'v3.1.0'; // Reorganized namespace structure!
+$plugin->release = 'v3.1.2'; // Fixed all CodeSniffer issues!
