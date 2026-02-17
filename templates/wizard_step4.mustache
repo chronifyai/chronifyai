@@ -23,7 +23,8 @@
     {
         "step_title": "Setup Complete!",
         "dashboard_url": "https://app.chronifyai.com/dashboard",
-        "settings_url": "/admin/settings.php?section=local_chronifyai"
+        "settings_url": "/admin/settings.php?section=local_chronifyai",
+        "previous_url": "/local/chronifyai/index.php?step=3"
     }
 }}
 
@@ -53,5 +54,11 @@
             <li>{{#str}}wizard:step4:step2, local_chronifyai{{/str}}</li>
             <li>{{#str}}wizard:step4:step3, local_chronifyai{{/str}}</li>
         </ul>
+    </div>
+
+    <div class="chronifyai-nav-buttons">
+        <a href="{{previous_url}}" class="chronifyai-btn-previous">
+            {{#str}}ui:button:previous, local_chronifyai{{/str}}
+        </a>
     </div>
 </div>

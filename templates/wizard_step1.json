@@ -1,8 +1,12 @@
 {
     "examples": [
         {
-            "step_description": "Welcome to ChronifyAI setup wizard",
-            "next_url": "/local/chronifyai/index.php?step=2"
+            "step_description": "Automatically archive courses and learner transcripts, stay compliant, and retrieve anything in seconds.",
+            "next_url": "/local/chronifyai/index.php?step=2",
+            "prereq_step1": "<strong>Create your free account</strong> at <a href=\"https://www.chronifyai.com\" target=\"_blank\">www.chronifyai.com</a> (opens in a new tab).",
+            "prereq_step2": "<strong>Go to the Integrations page</strong> in your ChronifyAI dashboard.",
+            "prereq_step3": "<strong>Select Moodle</strong> and copy your <em>API Base URL</em>, <em>Client ID</em>, and <em>Client Secret</em>.",
+            "prereq_step4": "Come back here and click <strong>Continue Setup</strong> below to enter those credentials."
         }
     ]
 }

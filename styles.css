@@ -126,6 +126,104 @@
     opacity: 0.6;
 }
 
+.chronifyai-wizard-step-1::before {
+    display: none;
+}
+
+.chronifyai-wizard-step-1 {
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.chronifyai-wizard-step-1 .chronifyai-main-content {
+    display: block;
+    text-align: center;
+}
+
+.chronifyai-wizard-step-1 .chronifyai-text-content {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.chronifyai-wizard-step-1 .chronifyai-prereq-steps {
+    display: inline-block;
+    text-align: left;
+}
+
+.chronifyai-wizard-step-2::before {
+    display: none;
+}
+
+.chronifyai-wizard-step-2 {
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.chronifyai-wizard-step-2 .chronifyai-main-content {
+    display: block;
+    text-align: center;
+}
+
+.chronifyai-wizard-step-2 .chronifyai-text-content {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.chronifyai-wizard-step-2 .chronifyai-form-container {
+    text-align: left;
+}
+
+.chronifyai-wizard-step-2 .chronifyai-info-box {
+    text-align: left;
+}
+
+.chronifyai-wizard-step-3::before {
+    display: none;
+}
+
+.chronifyai-wizard-step-3 {
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.chronifyai-wizard-step-3 .chronifyai-main-content {
+    display: block;
+    text-align: center;
+}
+
+.chronifyai-wizard-step-3 .chronifyai-text-content {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.chronifyai-wizard-step-3 .chronifyai-form-container {
+    text-align: left;
+}
+
+.chronifyai-wizard-step-4::before {
+    display: none;
+}
+
+.chronifyai-wizard-step-4 {
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.chronifyai-wizard-step-4 .chronifyai-main-content {
+    display: block;
+    text-align: center;
+}
+
+.chronifyai-wizard-step-4 .chronifyai-text-content {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.chronifyai-wizard-step-4 .chronifyai-completion-info {
+    text-align: left;
+    display: inline-block;
+}
+
 .chronifyai-main-content {
     position: relative;
     z-index: 1;
@@ -206,6 +304,30 @@
     text-decoration: none;
     outline: 2px solid var(--chronifyai-primary);
     outline-offset: 2px;
+}
+
+/* Navigation buttons (Previous) */
+.chronifyai-nav-buttons {
+    margin-top: 1.5rem;
+}
+
+.chronifyai-btn-previous {
+    color: var(--chronifyai-secondary);
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--chronifyai-border);
+    border-radius: 0.5rem;
+    display: inline-block;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.chronifyai-btn-previous:hover {
+    color: var(--chronifyai-primary);
+    border-color: var(--chronifyai-primary);
+    text-decoration: none;
 }
 
 .chronifyai-form-title {

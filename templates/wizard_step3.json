@@ -1,7 +1,8 @@
 {
     "examples": [
         {
-            "form": "<form>Form HTML</form>"
+            "form": "<form>Form HTML</form>",
+            "previous_url": "/local/chronifyai/index.php?step=2"
         }
     ]
 }

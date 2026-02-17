@@ -21,6 +21,7 @@
 
     Example context (json):
     {
+        "step": 1,
         "navigation": "<div>Navigation HTML</div>",
         "content": "<div>Main content HTML</div>",
         "backgroundimage": "https://example.com/bg.png"
@@ -31,7 +32,7 @@
     <div class="chronifyai-wizard-content">
         {{{navigation}}}
 
-        <div class="chronifyai-wizard-body">
+        <div class="chronifyai-wizard-body chronifyai-wizard-step-{{step}}">
             <div class="chronifyai-main-content">
                 {{{content}}}
 
@@ -41,10 +42,6 @@
                 </div>
                 {{/backgroundimage}}
             </div>
-        </div>
-
-        <div class="chronifyai-wizard-footer">
-            <p class="chronifyai-copyright">{{#str}}wizard:common:copyright, local_chronifyai{{/str}}</p>
         </div>
     </div>
 </div>

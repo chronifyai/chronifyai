@@ -127,6 +127,10 @@ switch ($step) {
             'step_title' => get_string('wizard:step1:title', 'local_chronifyai'),
             'step_description' => get_string('wizard:step1:description', 'local_chronifyai'),
             'next_url' => $stepurls['step2_url']->out(),
+            'prereq_step1' => get_string('wizard:step1:prereq:step1', 'local_chronifyai'),
+            'prereq_step2' => get_string('wizard:step1:prereq:step2', 'local_chronifyai'),
+            'prereq_step3' => get_string('wizard:step1:prereq:step3', 'local_chronifyai'),
+            'prereq_step4' => get_string('wizard:step1:prereq:step4', 'local_chronifyai'),
         ];
         $content = $OUTPUT->render_from_template('local_chronifyai/wizard_step1', $stepdata);
         break;
@@ -135,6 +139,7 @@ switch ($step) {
         $formhtml = $form->render();
         $stepdata = [
             'form' => $formhtml,
+            'previous_url' => $stepurls['step1_url']->out(),
         ];
         $content = $OUTPUT->render_from_template('local_chronifyai/wizard_step2', $stepdata);
         break;
@@ -143,6 +148,7 @@ switch ($step) {
         $formhtml = $form->render();
         $stepdata = [
             'form' => $formhtml,
+            'previous_url' => $stepurls['step2_url']->out(),
         ];
         $content = $OUTPUT->render_from_template('local_chronifyai/wizard_step3', $stepdata);
         break;
@@ -152,6 +158,7 @@ switch ($step) {
             'step_title' => get_string('wizard:step4:title', 'local_chronifyai'),
             'dashboard_url' => get_string('wizard:dashboard:url', 'local_chronifyai'),
             'settings_url' => new moodle_url('/admin/settings.php', ['section' => 'local_chronifyai']),
+            'previous_url' => $stepurls['step3_url']->out(),
         ];
         $content = $OUTPUT->render_from_template('local_chronifyai/wizard_step4', $stepdata);
         break;

@@ -21,8 +21,12 @@
 
     Example context (json):
     {
-        "step_description": "Welcome to ChronifyAI automated course management",
-        "next_url": "/local/chronifyai/index.php?step=2"
+        "step_description": "Automatically archive courses and learner transcripts...",
+        "next_url": "/local/chronifyai/index.php?step=2",
+        "prereq_step1": "<strong>Create your free account</strong> at www.chronifyai.com",
+        "prereq_step2": "<strong>Go to the Integrations page</strong> in your ChronifyAI dashboard.",
+        "prereq_step3": "<strong>Select Moodle</strong> and copy your credentials.",
+        "prereq_step4": "Come back here and click <strong>Continue Setup</strong>."
     }
 }}
 
@@ -35,9 +39,25 @@
         {{{step_description}}}
     </p>
 
+    <div class="chronifyai-prereq-section">
+        <h3 class="chronifyai-prereq-title">
+            {{#str}}wizard:step1:prereq:title, local_chronifyai{{/str}}
+        </h3>
+        <ol class="chronifyai-prereq-steps">
+            <li>{{{prereq_step1}}}</li>
+            <li>{{{prereq_step2}}}</li>
+            <li>{{{prereq_step3}}}</li>
+            <li>{{{prereq_step4}}}</li>
+        </ol>
+    </div>
+
     <div class="chronifyai-cta-section">
         <a href="{{next_url}}" class="chronifyai-btn-continue">
             {{#str}}wizard:step1:letssetup, local_chronifyai{{/str}}
         </a>
     </div>
+
+    <p class="chronifyai-note">
+        {{#str}}wizard:step1:note, local_chronifyai{{/str}}
+    </p>
 </div>

@@ -1,9 +1,10 @@
 {
     "examples": [
         {
+            "step": 1,
             "navigation": "<div>Navigation</div>",
             "content": "<div>Content</div>",
-            "backgroundimage": "https://example.com/bg.png"
+            "backgroundimage": ""
         }
     ]
 }

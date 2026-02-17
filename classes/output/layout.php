@@ -87,9 +87,10 @@ class layout implements renderable, templatable {
         $navigation = $output->render_from_template('local_chronifyai/wizard_navigation', $navigationdata);
 
         return [
+            'step' => $this->currentstep,
             'navigation' => $navigation,
             'content' => $this->content,
-            'backgroundimage' => $output->image_url('wizard-background', 'local_chronifyai')->out(),
+            'backgroundimage' => '',
         ];
     }
 }

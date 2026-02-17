@@ -37,14 +37,14 @@ class hook_callbacks {
             return;
         }
 
-        // Only on relevant admin pages.
-        $pagetype = $PAGE->pagetype;
+        // Only on the plugin settings page.
         $pagepath = $PAGE->url->get_path();
+        $pagesection = $PAGE->url->get_param('section');
 
-        $isadminpage = (strpos($pagetype, 'admin-') === 0);
-        $ispluginpage = (strpos($pagepath, '/local/chronifyai/') !== false);
+        $issettingspage = (strpos($pagepath, '/admin/settings.php') !== false)
+            && ($pagesection === 'local_chronifyai');
 
-        if (!$isadminpage && !$ispluginpage) {
+        if (!$issettingspage) {
             return;
         }
 
