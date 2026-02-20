@@ -69,21 +69,14 @@ class layout implements renderable, templatable {
      * @return array Array of template data.
      */
     public function export_for_template(renderer_base $output) {
-        $steps = [];
+        $navigationdata = [];
 
-        for ($i = 1; $i <= 4; $i++) {
+        for ($i = 1; $i <= 5; $i++) {
             $stepurl = $this->stepurls['step' . $i . '_url'];
-            $steps[] = [
-                'number' => $i,
-                'url' => $stepurl->out(),
-                'is_current' => ($i === $this->currentstep),
-                'is_completed' => ($i < $this->currentstep),
-                'show_check' => ($i < $this->currentstep),
-                'show_line_after' => ($i < 4),
-            ];
+            $navigationdata['step' . $i . '_url'] = $stepurl->out();
+            $navigationdata['step' . $i . '_active'] = ($i === $this->currentstep);
         }
 
-        $navigationdata = ['steps' => $steps];
         $navigation = $output->render_from_template('local_chronifyai/wizard_navigation', $navigationdata);
 
         return [

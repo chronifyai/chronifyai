@@ -1,0 +1,10 @@
+{
+    "examples": [
+        {
+            "step_title": "You're All Set!",
+            "dashboard_url": "https://app.chronifyai.com",
+            "settings_url": "/admin/settings.php?section=local_chronifyai",
+            "previous_url": "/local/chronifyai/index.php?step=4"
+        }
+    ]
+}

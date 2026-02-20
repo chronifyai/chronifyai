@@ -26,10 +26,12 @@
         "step2_url": "/local/chronifyai/index.php?step=2",
         "step3_url": "/local/chronifyai/index.php?step=3",
         "step4_url": "/local/chronifyai/index.php?step=4",
+        "step5_url": "/local/chronifyai/index.php?step=5",
         "step1_active": true,
         "step2_active": false,
         "step3_active": false,
-        "step4_active": false
+        "step4_active": false,
+        "step5_active": false
     }
 }}
 
@@ -59,6 +61,13 @@
         <a href="{{step4_url}}" class="chronifyai-step {{#step4_active}}active{{/step4_active}}">
             <span class="chronifyai-step-number">4</span>
             <span class="chronifyai-step-label">{{#str}}wizard:step4:nav, local_chronifyai{{/str}}</span>
+        </a>
+
+        <div class="chronifyai-step-connector"></div>
+
+        <a href="{{step5_url}}" class="chronifyai-step {{#step5_active}}active{{/step5_active}}">
+            <span class="chronifyai-step-number">5</span>
+            <span class="chronifyai-step-label">{{#str}}wizard:step5:nav, local_chronifyai{{/str}}</span>
         </a>
     </div>
 </div>

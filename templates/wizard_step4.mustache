@@ -17,44 +17,82 @@
 {{!
     @template local_chronifyai/wizard_step4
 
-    ChronifyAI setup wizard - Completion page (Step 4)
+    ChronifyAI setup wizard - Connect Your Moodle (Step 4)
 
     Example context (json):
     {
-        "step_title": "Setup Complete!",
-        "dashboard_url": "https://app.chronifyai.com/dashboard",
-        "settings_url": "/admin/settings.php?section=local_chronifyai",
-        "previous_url": "/local/chronifyai/index.php?step=3"
+        "site_url": "https://yourmoodle.edu",
+        "token": "abc123def456",
+        "next_url": "/local/chronifyai/index.php?step=5",
+        "previous_url": "/local/chronifyai/index.php?step=3",
+        "has_error": false,
+        "error_message": "",
+        "instruction_step1": "Copy the <strong>Moodle Site URL</strong> and <strong>Web Service Token</strong> above.",
+        "instruction_step2": "Go to your <strong>ChronifyAI Integrations page</strong>.",
+        "instruction_step3": "Paste both values under your <strong>Moodle connection</strong>.",
+        "instruction_step4": "Click <strong>Connect</strong> in ChronifyAI."
     }
 }}
 
 <div class="chronifyai-text-content">
-    <h2 class="chronifyai-completion-title">{{step_title}}</h2>
-
-    <div class="chronifyai-success-icon">✓</div>
-
-    <p class="chronifyai-completion-message">
-        {{#str}}wizard:step4:message, local_chronifyai{{/str}}
+    <h2 class="chronifyai-section-title">
+        {{#str}}wizard:step4:title, local_chronifyai{{/str}}
+    </h2>
+    <p class="chronifyai-section-description">
+        {{#str}}wizard:step4:description, local_chronifyai{{/str}}
     </p>
 
-    <div class="chronifyai-completion-actions">
-        <a href="{{dashboard_url}}" class="chronifyai-btn-primary" target="_blank">
-            {{#str}}wizard:step4:dashboard, local_chronifyai{{/str}}
-        </a>
+    {{#has_error}}
+    <div class="alert alert-danger">
+        {{{error_message}}}
+    </div>
+    {{/has_error}}
 
-        <a href="{{settings_url}}" class="chronifyai-btn-secondary">
-            {{#str}}wizard:step4:settings, local_chronifyai{{/str}}
-        </a>
+    {{^has_error}}
+    <div class="chronifyai-copy-fields">
+        <div class="chronifyai-copy-field">
+            <label class="chronifyai-copy-label">
+                {{#str}}wizard:step4:siteurl:label, local_chronifyai{{/str}}
+            </label>
+            <div class="chronifyai-copy-input-group">
+                <input type="text" class="chronifyai-copy-input" id="chronifyai-site-url" value="{{site_url}}" readonly>
+                <button type="button" class="chronifyai-btn-copy" onclick="navigator.clipboard.writeText(document.getElementById('chronifyai-site-url').value).then(function(){var b=event.target.closest('.chronifyai-btn-copy');b.textContent='✓ Copied';setTimeout(function(){b.textContent='Copy'},2000)})">
+                    {{#str}}ui:button:copy, local_chronifyai{{/str}}
+                </button>
+            </div>
+        </div>
+
+        <div class="chronifyai-copy-field">
+            <label class="chronifyai-copy-label">
+                {{#str}}wizard:step4:token:label, local_chronifyai{{/str}}
+            </label>
+            <div class="chronifyai-copy-input-group">
+                <input type="text" class="chronifyai-copy-input" id="chronifyai-token" value="{{token}}" readonly>
+                <button type="button" class="chronifyai-btn-copy" onclick="navigator.clipboard.writeText(document.getElementById('chronifyai-token').value).then(function(){var b=event.target.closest('.chronifyai-btn-copy');b.textContent='✓ Copied';setTimeout(function(){b.textContent='Copy'},2000)})">
+                    {{#str}}ui:button:copy, local_chronifyai{{/str}}
+                </button>
+            </div>
+        </div>
     </div>
 
-    <div class="chronifyai-completion-info">
-        <h3>{{#str}}wizard:step4:nextsteps, local_chronifyai{{/str}}</h3>
-        <ul class="chronifyai-next-steps-list">
-            <li>{{#str}}wizard:step4:step1, local_chronifyai{{/str}}</li>
-            <li>{{#str}}wizard:step4:step2, local_chronifyai{{/str}}</li>
-            <li>{{#str}}wizard:step4:step3, local_chronifyai{{/str}}</li>
-        </ul>
+    <div class="chronifyai-prereq-section">
+        <h3 class="chronifyai-prereq-title">
+            {{#str}}wizard:step4:instructions:title, local_chronifyai{{/str}}
+        </h3>
+        <ol class="chronifyai-prereq-steps">
+            <li>{{{instruction_step1}}}</li>
+            <li>{{{instruction_step2}}}</li>
+            <li>{{{instruction_step3}}}</li>
+            <li>{{{instruction_step4}}}</li>
+        </ol>
     </div>
+
+    <div class="chronifyai-cta-section">
+        <a href="{{next_url}}" class="chronifyai-btn-continue">
+            {{#str}}wizard:step4:confirm, local_chronifyai{{/str}}
+        </a>
+    </div>
+    {{/has_error}}
 
     <div class="chronifyai-nav-buttons">
         <a href="{{previous_url}}" class="chronifyai-btn-previous">

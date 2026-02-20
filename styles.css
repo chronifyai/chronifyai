@@ -219,9 +219,90 @@
     margin: 0 auto;
 }
 
-.chronifyai-wizard-step-4 .chronifyai-completion-info {
+.chronifyai-wizard-step-4 .chronifyai-copy-fields {
     text-align: left;
     display: inline-block;
+    width: 100%;
+    max-width: 600px;
+    margin: 1.5rem auto;
+}
+
+.chronifyai-wizard-step-4 .chronifyai-prereq-section {
+    text-align: left;
+    display: inline-block;
+}
+
+/* Step 5: Complete - centered layout */
+.chronifyai-wizard-step-5::before {
+    display: none;
+}
+
+.chronifyai-wizard-step-5 {
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.chronifyai-wizard-step-5 .chronifyai-main-content {
+    display: block;
+    text-align: center;
+}
+
+.chronifyai-wizard-step-5 .chronifyai-text-content {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.chronifyai-wizard-step-5 .chronifyai-completion-info {
+    text-align: left;
+    display: inline-block;
+}
+
+/* Copy field components */
+.chronifyai-copy-field {
+    margin-bottom: 1rem;
+}
+
+.chronifyai-copy-label {
+    display: block;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 0.4rem;
+    color: #374151;
+}
+
+.chronifyai-copy-input-group {
+    display: flex;
+    gap: 0;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.chronifyai-copy-input {
+    flex: 1;
+    padding: 0.6rem 0.8rem;
+    font-size: 0.9rem;
+    font-family: monospace;
+    border: none;
+    background: #f9fafb;
+    color: #374151;
+    outline: none;
+}
+
+.chronifyai-btn-copy {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    background: #0d9488;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    white-space: nowrap;
+}
+
+.chronifyai-btn-copy:hover {
+    background: #0f766e;
 }
 
 .chronifyai-main-content {

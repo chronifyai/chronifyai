@@ -24,6 +24,7 @@
 
 require_once(__DIR__ . '/../../config.php');
 require_once($CFG->libdir . '/adminlib.php');
+require_once($CFG->libdir . '/externallib.php');
 
 use local_chronifyai\config;
 use local_chronifyai\constants;
@@ -36,7 +37,7 @@ admin_externalpage_setup(constants::PLUGIN_NAME);
 
 // Get the current step from the URL parameter.
 $step = optional_param('step', 1, PARAM_INT);
-$step = max(1, min(4, $step)); // Ensure the step is between 1-4.
+$step = max(1, min(5, $step)); // Ensure the step is between 1-5.
 
 // Set up the page.
 $pageurl = new moodle_url('/local/chronifyai/index.php', ['step' => $step]);
@@ -50,6 +51,7 @@ $stepurls = [
     'step2_url' => new moodle_url('/local/chronifyai/index.php', ['step' => 2]),
     'step3_url' => new moodle_url('/local/chronifyai/index.php', ['step' => 3]),
     'step4_url' => new moodle_url('/local/chronifyai/index.php', ['step' => 4]),
+    'step5_url' => new moodle_url('/local/chronifyai/index.php', ['step' => 5]),
 ];
 
 // Initialize form variable to avoid undefined variable error.
@@ -118,6 +120,64 @@ switch ($step) {
         break;
 }
 
+/**
+ * Get or create a web service token for the ChronifyAI service.
+ *
+ * Looks up the ChronifyAI external service, ensures the current admin user
+ * is an authorized user, and returns an existing or newly created token.
+ *
+ * @return array{token: string, error: string} Token string on success, error message on failure.
+ */
+function local_chronifyai_get_or_create_token(): array {
+    global $DB, $USER;
+
+    $result = ['token' => '', 'error' => ''];
+
+    // Find the ChronifyAI external service.
+    $service = $DB->get_record('external_services', ['shortname' => 'local_chronifyai_service']);
+    if (!$service) {
+        $result['error'] = get_string('wizard:step4:error:noservice', 'local_chronifyai');
+        return $result;
+    }
+
+    // Check if a token already exists for this user and service.
+    $existingtoken = $DB->get_record('external_tokens', [
+        'userid' => $USER->id,
+        'externalserviceid' => $service->id,
+        'tokentype' => EXTERNAL_TOKEN_PERMANENT,
+    ]);
+
+    if ($existingtoken) {
+        $result['token'] = $existingtoken->token;
+        return $result;
+    }
+
+    // Add the user as an authorized user if not already.
+    $authorizeduser = $DB->get_record('external_services_users', [
+        'externalserviceid' => $service->id,
+        'userid' => $USER->id,
+    ]);
+
+    if (!$authorizeduser) {
+        $serviceuser = new stdClass();
+        $serviceuser->externalserviceid = $service->id;
+        $serviceuser->userid = $USER->id;
+        $serviceuser->timecreated = time();
+        $DB->insert_record('external_services_users', $serviceuser);
+    }
+
+    // Generate a new permanent token.
+    $token = external_generate_token(
+        EXTERNAL_TOKEN_PERMANENT,
+        $service->id,
+        $USER->id,
+        context_system::instance()
+    );
+
+    $result['token'] = $token;
+    return $result;
+}
+
 // Prepare step-specific content.
 $content = '';
 
@@ -154,13 +214,32 @@ switch ($step) {
         break;
 
     case 4:
+        // Auto-create token for the ChronifyAI service.
+        $tokenresult = local_chronifyai_get_or_create_token();
+
         $stepdata = [
-            'step_title' => get_string('wizard:step4:title', 'local_chronifyai'),
-            'dashboard_url' => get_string('wizard:dashboard:url', 'local_chronifyai'),
-            'settings_url' => new moodle_url('/admin/settings.php', ['section' => 'local_chronifyai']),
+            'site_url' => $CFG->wwwroot,
+            'token' => $tokenresult['token'],
+            'has_error' => !empty($tokenresult['error']),
+            'error_message' => $tokenresult['error'],
+            'next_url' => $stepurls['step5_url']->out(),
             'previous_url' => $stepurls['step3_url']->out(),
+            'instruction_step1' => get_string('wizard:step4:instruction:step1', 'local_chronifyai'),
+            'instruction_step2' => get_string('wizard:step4:instruction:step2', 'local_chronifyai'),
+            'instruction_step3' => get_string('wizard:step4:instruction:step3', 'local_chronifyai'),
+            'instruction_step4' => get_string('wizard:step4:instruction:step4', 'local_chronifyai'),
         ];
         $content = $OUTPUT->render_from_template('local_chronifyai/wizard_step4', $stepdata);
+        break;
+
+    case 5:
+        $stepdata = [
+            'step_title' => get_string('wizard:step5:title', 'local_chronifyai'),
+            'dashboard_url' => get_string('wizard:dashboard:url', 'local_chronifyai'),
+            'settings_url' => new moodle_url('/admin/settings.php', ['section' => 'local_chronifyai']),
+            'previous_url' => $stepurls['step4_url']->out(),
+        ];
+        $content = $OUTPUT->render_from_template('local_chronifyai/wizard_step5', $stepdata);
         break;
 }
 
