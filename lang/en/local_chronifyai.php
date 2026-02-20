@@ -22,7 +22,11 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+$string['acknowledge_data_transmission'] = 'I acknowledge external data transmission';
+$string['acknowledge_data_transmission_desc'] = 'I understand that enabling this plugin will transmit course data, student information, grades, and other data to ChronifyAI\'s external servers. I have reviewed applicable data protection regulations and have appropriate agreements in place.';
+$string['cachedef_apitoken'] = 'ChronifyAI API authentication tokens';
 $string['chronifyai:useservice'] = 'ChronifyAI API: use service';
+$string['coursenotfound'] = 'Course not found';
 $string['error:api:communicationfailed'] = 'An error occurred while communicating with the ChronifyAI API: {$a}';
 $string['error:api:invalidconfig'] = 'Invalid configuration';
 $string['error:auth:approvalinstruction'] = 'Please approve this site connection in your ChronifyAI App to continue.';
@@ -32,7 +36,6 @@ $string['error:auth:clientsecretmissing'] = 'Client Secret is missing. Please co
 $string['error:auth:emptytokenresponse'] = 'Auth response returned no token';
 $string['error:auth:failed'] = 'Authentication failed';
 $string['error:auth:tokenlockfailed'] = 'Token lock failed';
-$string['maxretriesexceeded'] = 'Maximum retry attempts exceeded';
 $string['error:backup:cannotcopyfile'] = 'Cannot copy backup file to temporary directory';
 $string['error:backup:cannotcreatetempdirectory'] = 'Cannot create temporary directory for backup files';
 $string['error:backup:controllerfailed'] = 'Failed to create backup controller: {$a}';
@@ -48,7 +51,6 @@ $string['error:backup:uploadfailed'] = 'Failed to upload backup file to Chronify
 $string['error:course:creationfailed'] = 'Failed to create new course: {$a}';
 $string['error:course:notsupported'] = 'Site course is not supported';
 $string['error:course:overridefailed'] = 'Failed to apply course parameter overrides: {$a}';
-$string['coursenotfound'] = 'Course not found';
 $string['error:dir:createfailed'] = 'Directory creation failed: {$a}';
 $string['error:export:cannotcreatedirectory'] = 'Cannot create export directory: {$a}';
 $string['error:export:cannotcreatefile'] = 'Cannot create export file: {$a}';
@@ -60,6 +62,8 @@ $string['error:file:notfound'] = 'File not found: {$a}';
 $string['error:file:readfailed'] = 'File read failed: {$a}';
 $string['error:file:sizefailed'] = 'File size failed: {$a}';
 $string['error:file:uploadfailed'] = 'File upload failed: {$a}';
+$string['error:invalidurl'] = 'Invalid URL format. Please enter a valid HTTP or HTTPS URL.';
+$string['error:must_acknowledge'] = 'You must acknowledge the data transmission requirements before enabling the plugin.';
 $string['error:permission:nopermission'] = 'You do not have permission to perform this action in the LMS';
 $string['error:report:cannotcreatefile'] = 'Cannot create report file in temporary directory';
 $string['error:report:failed'] = 'Report generation process failed';
@@ -68,6 +72,9 @@ $string['error:restore:controllerfailed'] = 'Failed to create restore controller
 $string['error:restore:error'] = 'Restore error: {$a}';
 $string['error:restore:executionfailed'] = 'Restore execution failed: {$a}';
 $string['error:restore:failed'] = 'Restore process failed';
+$string['error:restore:missingbackupid'] = 'Backup ID is required for restore operation';
+$string['error:restore:missingcourseid'] = 'Course ID is required for restore operation';
+$string['error:restore:missingexternaluserid'] = 'External user ID is required for restore operation';
 $string['error:restore:precheckfailed'] = 'Restore precheck failed: {$a}';
 $string['error:transcripts:export:emptyfile'] = 'No valid transcript data was generated for export.';
 $string['error:transcripts:export:failed'] = 'Failed to export transcripts. Please try again later.';
@@ -91,11 +98,19 @@ $string['error:validation:jsonnotobject'] = 'JSON must be an object';
 $string['error:validation:shortnameexists'] = 'A course with this short name already exists';
 $string['error:validation:shortnamerequired'] = 'Course short name is required';
 $string['error:validation:shortnametoolong'] = 'Short name is too long (maximum 255 characters)';
+$string['error_invalid_api_url'] = 'Invalid API base URL format';
+$string['error_invalid_email'] = 'Invalid email address format';
+$string['error_missing_api_url'] = 'API base URL is required';
+$string['error_missing_email'] = 'Email address is required';
+$string['instructor:unknown'] = 'Unknown';
+$string['invalidattachment'] = 'Invalid attachment format';
+$string['maxretriesexceeded'] = 'Maximum retry attempts exceeded';
 $string['notification:course:backup:completed:message'] = 'Course backup has been completed for: {$a->coursename}.';
 $string['notification:course:backup:completed:title'] = 'Course backup complete';
 $string['notification:course:restore:completed:message'] = 'Course restore has been completed for: {$a->coursename}. View course: <a href="{$a->courseurl}" target="_blank" style="color: blue;">LINK</a>';
 $string['notification:course:restore:completed:title'] = 'Course restore complete';
 $string['notification:course:restore:failed:message'] = 'Course restore failed. Please check the system logs for detailed information.';
+$string['notification:course:restore:failed:message:withname'] = 'Course restore failed for {$a}';
 $string['notification:course:restore:failed:title'] = 'Course restore failed';
 $string['notification:course:restore:failed:withname:message'] = 'Course restore failed for: {$a}. Please check the system logs for detailed information.';
 $string['notification:transcripts:completed:message'] = 'All user transcripts have been successfully exported to ChronifyAI.';
@@ -103,34 +118,46 @@ $string['notification:transcripts:completed:title'] = 'Transcripts export comple
 $string['notification:transcripts:failed:message'] = 'Transcripts export failed: {$a}';
 $string['notification:transcripts:failed:title'] = 'Transcripts export failed';
 $string['pluginname'] = 'ChronifyAI';
+$string['privacy:acknowledge:description'] = 'I acknowledge that enabling this plugin will transmit course data, student information, grades, and other data to ChronifyAI\'s external servers. I have reviewed applicable data protection regulations and have appropriate agreements in place.';
+$string['privacy:acknowledge:label'] = 'Data transmission acknowledgment';
+$string['privacy:acknowledge:required'] = 'You must acknowledge the data transmission terms before enabling the plugin.';
+$string['privacy:datasent:log'] = 'Data transmission to ChronifyAI: {$a}';
 $string['privacy:metadata'] = 'The ChronifyAI plugin stores API credentials in site configuration and transmits course data to the ChronifyAI external service for archiving purposes.';
 $string['privacy:metadata:chronifyaiservice'] = 'Course data and metadata is transmitted to the ChronifyAI external service for archiving and compliance purposes. User information is included only when users interact with archived courses.';
+$string['privacy:metadata:chronifyaiservice:activities'] = 'Course activities and their configurations';
+$string['privacy:metadata:chronifyaiservice:assignments'] = 'Assignment details and settings';
+$string['privacy:metadata:chronifyaiservice:certificatedata'] = 'Issued certificates and achievement data';
+$string['privacy:metadata:chronifyaiservice:completiondata'] = 'Course and activity completion status';
 $string['privacy:metadata:chronifyaiservice:coursecategory'] = 'The category the course belongs to';
+$string['privacy:metadata:chronifyaiservice:coursecompletions'] = 'Course completion dates and certificates';
 $string['privacy:metadata:chronifyaiservice:courseid'] = 'The Moodle course ID';
 $string['privacy:metadata:chronifyaiservice:coursename'] = 'The full name of the course';
 $string['privacy:metadata:chronifyaiservice:courseshortname'] = 'The short name of the course';
-$string['privacy:metadata:chronifyaiservice:userid'] = 'The Moodle user ID of users enrolled in or accessing the course';
-$string['privacy:metadata:chronifyaiservice:username'] = 'The user\'s username';
+$string['privacy:metadata:chronifyaiservice:files'] = 'Course files and resources uploaded by teachers and students';
+$string['privacy:metadata:chronifyaiservice:forumposts'] = 'Student forum posts and discussions';
+$string['privacy:metadata:chronifyaiservice:forums'] = 'Forum discussions and topics';
+$string['privacy:metadata:chronifyaiservice:grades'] = 'Student grades for all graded activities';
+$string['privacy:metadata:chronifyaiservice:quizattempts'] = 'Student quiz attempts, answers, and scores';
+$string['privacy:metadata:chronifyaiservice:quizzes'] = 'Quiz questions, settings, and configurations';
+$string['privacy:metadata:chronifyaiservice:submissions'] = 'Student assignment submissions and feedback';
+$string['privacy:metadata:chronifyaiservice:transcriptgrades'] = 'Complete transcript of all student grades';
 $string['privacy:metadata:chronifyaiservice:useremail'] = 'The email address used for SSO authentication with ChronifyAI';
 $string['privacy:metadata:chronifyaiservice:userfirstname'] = 'The user\'s first name';
+$string['privacy:metadata:chronifyaiservice:userid'] = 'The Moodle user ID of users enrolled in or accessing the course';
 $string['privacy:metadata:chronifyaiservice:userlastname'] = 'The user\'s last name';
-$string['privacy:metadata:chronifyaiservice:activities'] = 'Course activities and their configurations';
-$string['privacy:metadata:chronifyaiservice:assignments'] = 'Assignment details and settings';
-$string['privacy:metadata:chronifyaiservice:quizzes'] = 'Quiz questions, settings, and configurations';
-$string['privacy:metadata:chronifyaiservice:forums'] = 'Forum discussions and topics';
-$string['privacy:metadata:chronifyaiservice:files'] = 'Course files and resources uploaded by teachers and students';
-$string['privacy:metadata:chronifyaiservice:grades'] = 'Student grades for all graded activities';
-$string['privacy:metadata:chronifyaiservice:submissions'] = 'Student assignment submissions and feedback';
-$string['privacy:metadata:chronifyaiservice:quizattempts'] = 'Student quiz attempts, answers, and scores';
-$string['privacy:metadata:chronifyaiservice:forumposts'] = 'Student forum posts and discussions';
-$string['privacy:metadata:chronifyaiservice:completiondata'] = 'Course and activity completion status';
-$string['privacy:metadata:chronifyaiservice:transcriptgrades'] = 'Complete transcript of all student grades';
-$string['privacy:metadata:chronifyaiservice:coursecompletions'] = 'Course completion dates and certificates';
-$string['privacy:metadata:chronifyaiservice:certificatedata'] = 'Issued certificates and achievement data';
+$string['privacy:metadata:chronifyaiservice:username'] = 'The user\'s username';
 $string['privacy:metadata:configplugins'] = 'The plugin stores API authentication credentials (Client ID and Client Secret) in Moodle\'s configuration table. These credentials are stored as plain text in the database and are only accessible to site administrators.';
 $string['privacy:metadata:configplugins:name'] = 'The configuration setting name (e.g., client_id, client_secret, api_base_url)';
 $string['privacy:metadata:configplugins:plugin'] = 'The plugin name (local_chronifyai)';
 $string['privacy:metadata:configplugins:value'] = 'The configuration setting value, including API credentials stored as plain text';
+$string['privacy:setup:requirements'] = 'Before enabling, ensure you have:<ul><li>Reviewed the privacy documentation (PRIVACY.md)</li><li>Consulted with your legal/compliance team</li><li>Executed data processing agreements with ChronifyAI</li><li>Updated your institutional privacy policy</li><li>Documented legal basis for data processing</li></ul>';
+$string['privacy:setup:warning'] = '⚠️ <strong>Privacy Notice:</strong> When enabled, this plugin will transmit course content, student data, grades, and other information to ChronifyAI\'s external servers.';
+$string['privacy:warning:setupwizard'] = '<div class="alert alert-warning"><strong>⚠️ Privacy & Compliance Notice:</strong><br>When enabled, this plugin will transmit course content, student data, grades, and other information to ChronifyAI\'s external servers for archiving purposes.<br><br><strong>Before enabling, ensure you have:</strong><ul><li>✅ Read the <a href="../local/chronifyai/PRIVACY.md" target="_blank">Privacy Documentation</a></li><li>✅ Executed a Data Processing Agreement with ChronifyAI</li><li>✅ Updated your institutional privacy policy</li><li>✅ Informed users about external data archiving</li><li>✅ Verified compliance with applicable regulations (GDPR, FERPA, etc.)</li></ul></div>';
+$string['retryauthfailed'] = 'Authentication retry failed';
+$string['service:restore:continuingdespitewarnings'] = 'Continuing restore despite warnings...';
+$string['service:restore:errorsmessage'] = 'Errors: {$a}';
+$string['service:restore:nameswarning'] = 'Warning: Could not update course names - keeping temporary names';
+$string['service:restore:warningsignored'] = 'Restore warnings (ignored): {$a}';
 $string['settings:api:apibaseurl'] = 'API Base URL';
 $string['settings:api:apibaseurl_desc'] = 'The base URL for the ChronifyAI API.';
 $string['settings:api:apibaseurl_help'] = 'Enter the full URL of the ChronifyAI API endpoint. This is typically provided in your ChronifyAI account dashboard.';
@@ -145,6 +172,8 @@ $string['settings:authentication:clientsecret_help'] = 'The secret key for your 
 $string['settings:features:enabled'] = 'Enable ChronifyAI';
 $string['settings:features:enabled_desc'] = 'Enable or disable the ChronifyAI plugin functionality';
 $string['settings:features:enabled_help'] = 'When enabled, ChronifyAI will automatically archive your courses and student transcripts to ensure compliance and data preservation.';
+$string['sso_max_retries'] = 'Maximum SSO retry attempts exceeded';
+$string['sso_request_failed'] = 'SSO authentication request failed';
 $string['status:backup:completed'] = 'Backup completed successfully';
 $string['status:backup:initiated'] = 'Course backup has been initiated';
 $string['status:backup:inprogress'] = 'Backup is currently in progress';
@@ -158,8 +187,23 @@ $string['status:plugin:disabled'] = 'The ChronifyAI plugin is currently disabled
 $string['status:report:started'] = 'Course report generation has started';
 $string['status:restore:started'] = 'Course restore process has started';
 $string['status:settings:saved'] = 'Settings saved successfully';
+$string['task:backup:errorcleanup'] = 'Temporary file cleaned up after error';
+$string['task:backup:storedcleanup'] = 'Stored backup file cleaned up';
+$string['task:backup:tempcleanup'] = 'Temporary backup file cleaned up';
 $string['task:backupandupload'] = 'ChronifyAI: Backup and Upload Course';
 $string['task:generateanduploadreport'] = 'ChronifyAI: Generate and Upload Course Report';
+$string['task:report:unexpectederror'] = 'Unexpected error during report upload: {$a}';
+$string['task:report:unexpectedformat'] = 'Unexpected response format';
+$string['task:restore:backupcleanup'] = 'Temporary backup file cleaned up';
+$string['task:restore:downloaded'] = 'Backup file downloaded successfully';
+$string['task:restore:downloading'] = 'Downloading backup file from ChronifyAI...';
+$string['task:restore:errorcleanup'] = 'Temporary file cleaned up after error';
+$string['task:restore:filesize'] = 'File size: {$a}';
+$string['task:restore:initializing'] = 'Initializing restore process...';
+$string['task:restore:lockobtained'] = 'Obtained lock for restore operation';
+$string['task:restore:lockreleased'] = 'Course restore lock released';
+$string['task:restore:preparingoptions'] = 'Preparing and validating restore options...';
+$string['task:restore:tempdircreated'] = 'Created temporary directory for backup file';
 $string['task:restorecourse'] = 'ChronifyAI: Download and Restore Course';
 $string['task:transcripts:export'] = 'ChronifyAI: Export User Transcripts';
 $string['transcripts:export:completed'] = 'All user transcripts have been successfully exported to ChronifyAI.';
@@ -174,6 +218,7 @@ $string['ui:button:settings'] = 'Manage Settings';
 $string['ui:button:testconnection'] = 'Test API Connection';
 $string['ui:label:disabled'] = 'Disabled';
 $string['ui:label:enabled'] = 'Enabled';
+$string['warning:externaldatatransmission'] = '⚠️ <strong>Data Transmission Notice:</strong> ChronifyAI transmits course data including student information to external servers at ChronifyAI.com. Ensure you have appropriate data processing agreements in place and have informed users according to your privacy policy and local regulations (GDPR, FERPA, etc.). See <a href="{$a}">PRIVACY.md</a> for complete details.';
 $string['wizard:benefits:automatedarchiving'] = 'Automated course and transcript archiving';
 $string['wizard:benefits:complianceready'] = 'Compliance-ready data storage';
 $string['wizard:benefits:easyretrieval'] = 'Easy search and retrieval for audits';
@@ -182,17 +227,18 @@ $string['wizard:benefits:title'] = 'What you get with ChronifyAI:';
 $string['wizard:common:background:alt'] = 'ChronifyAI Features Slides';
 $string['wizard:common:copyright'] = '©2025 ChronifyAI, Inc. All Rights Reserved.';
 $string['wizard:common:title'] = 'ChronifyAI Setup Wizard';
+$string['wizard:dashboard:url'] = 'https://app.chronifyai.com';
+$string['wizard:step1:createaccount'] = 'Create Your ChronifyAI Account';
 $string['wizard:step1:description'] = 'Automatically archive courses and learner transcripts, stay compliant, and retrieve anything in seconds - no manual backups, no clutter, no risk.';
 $string['wizard:step1:letssetup'] = 'I Have My Credentials — Continue Setup';
-$string['wizard:step1:prereq:title'] = 'Before you begin';
+$string['wizard:step1:maintitle'] = 'Next-Gen<br><span class="chronifyai-highlight">Data Archiving</span><br>for Your LMS!';
+$string['wizard:step1:nav'] = 'Welcome';
+$string['wizard:step1:note'] = 'Already have an account? Skip straight to setup - you\'ll just need your API credentials from the Integrations page.';
 $string['wizard:step1:prereq:step1'] = '<strong>Create your free account</strong> at <a href="https://www.chronifyai.com" target="_blank" rel="noopener">www.chronifyai.com</a> (opens in a new tab).';
 $string['wizard:step1:prereq:step2'] = '<strong>Go to the Integrations page</strong> in your ChronifyAI dashboard.';
 $string['wizard:step1:prereq:step3'] = '<strong>Select Moodle</strong> and copy your <em>API Base URL</em>, <em>Client ID</em>, and <em>Client Secret</em>.';
 $string['wizard:step1:prereq:step4'] = 'Come back here and click <strong>Continue Setup</strong> below to enter those credentials.';
-$string['wizard:step1:createaccount'] = 'Create Your ChronifyAI Account';
-$string['wizard:step1:note'] = 'Already have an account? Skip straight to setup - you\'ll just need your API credentials from the Integrations page.';
-$string['wizard:step1:maintitle'] = 'Next-Gen<br><span class="chronifyai-highlight">Data Archiving</span><br>for Your LMS!';
-$string['wizard:step1:nav'] = 'Welcome';
+$string['wizard:step1:prereq:title'] = 'Before you begin';
 $string['wizard:step1:title'] = 'Next-Gen Data Archiving for Your LMS!';
 $string['wizard:step2:description'] = 'Enter the API credentials from your ChronifyAI Integrations page.';
 $string['wizard:step2:info'] = 'Your credentials are encrypted and stored securely. You can find them in your ChronifyAI dashboard on the Integrations page under the Moodle connection.';
@@ -210,112 +256,24 @@ $string['wizard:step3:feature:transcripts:desc'] = 'Export and archive student t
 $string['wizard:step3:feature:transcripts:title'] = 'Transcript Export';
 $string['wizard:step3:nav'] = 'Features';
 $string['wizard:step3:title'] = 'Enable Features';
-$string['wizard:step4:title'] = 'Connect Your Moodle to ChronifyAI';
+$string['wizard:step4:confirm'] = 'I\'ve Connected in ChronifyAI - Complete Setup';
 $string['wizard:step4:description'] = 'Copy the values below and paste them into your ChronifyAI Integrations page under the Moodle connection.';
-$string['wizard:step4:nav'] = 'Connect';
-$string['wizard:step4:siteurl:label'] = 'Moodle Site URL';
-$string['wizard:step4:token:label'] = 'Web Service Token';
-$string['wizard:step4:instructions:title'] = 'What to do next';
+$string['wizard:step4:error:noservice'] = 'The ChronifyAI web service could not be found. Please reinstall the plugin or contact support.';
 $string['wizard:step4:instruction:step1'] = '<strong>Copy</strong> the Moodle Site URL and Web Service Token above.';
 $string['wizard:step4:instruction:step2'] = 'Go to your <a href="https://www.chronifyai.com" target="_blank" rel="noopener"><strong>ChronifyAI Integrations page</strong></a>.';
 $string['wizard:step4:instruction:step3'] = 'Paste both values under your <strong>Moodle connection</strong>.';
 $string['wizard:step4:instruction:step4'] = 'Click <strong>Connect</strong> in ChronifyAI and confirm the connection is active.';
-$string['wizard:step4:confirm'] = 'I\'ve Connected in ChronifyAI - Complete Setup';
-$string['wizard:step4:error:noservice'] = 'The ChronifyAI web service could not be found. Please reinstall the plugin or contact support.';
-$string['wizard:step5:nav'] = 'Complete';
-$string['wizard:step5:title'] = 'You\'re All Set!';
-$string['wizard:step5:message'] = 'Your Moodle site is now connected to ChronifyAI. Archiving, restoring, and transcript exports are ready to go.';
+$string['wizard:step4:instructions:title'] = 'What to do next';
+$string['wizard:step4:nav'] = 'Connect';
+$string['wizard:step4:siteurl:label'] = 'Moodle Site URL';
+$string['wizard:step4:title'] = 'Connect Your Moodle to ChronifyAI';
+$string['wizard:step4:token:label'] = 'Web Service Token';
 $string['wizard:step5:dashboard'] = 'Open ChronifyAI Dashboard';
-$string['wizard:step5:settings'] = 'Manage Settings';
+$string['wizard:step5:message'] = 'Your Moodle site is now connected to ChronifyAI. Archiving, restoring, and transcript exports are ready to go.';
+$string['wizard:step5:nav'] = 'Complete';
 $string['wizard:step5:nextsteps'] = 'Next Steps';
+$string['wizard:step5:settings'] = 'Manage Settings';
 $string['wizard:step5:step1'] = 'Configure your backup schedules in the ChronifyAI dashboard';
 $string['wizard:step5:step2'] = 'Set up automated archiving rules for your courses';
 $string['wizard:step5:step3'] = 'Review privacy and compliance settings';
-$string['wizard:dashboard:url'] = 'https://app.chronifyai.com'; // Default ChronifyAI dashboard URL.
-$string['warning:externaldatatransmission'] = '⚠️ <strong>Data Transmission Notice:</strong> ChronifyAI transmits course data including student information to external servers at ChronifyAI.com. Ensure you have appropriate data processing agreements in place and have informed users according to your privacy policy and local regulations (GDPR, FERPA, etc.). See <a href="{$a}">PRIVACY.md</a> for complete details.';
-$string['privacy:warning:setupwizard'] = '<div class="alert alert-warning"><strong>⚠️ Privacy & Compliance Notice:</strong><br>When enabled, this plugin will transmit course content, student data, grades, and other information to ChronifyAI\'s external servers for archiving purposes.<br><br><strong>Before enabling, ensure you have:</strong><ul><li>✅ Read the <a href="../local/chronifyai/PRIVACY.md" target="_blank">Privacy Documentation</a></li><li>✅ Executed a Data Processing Agreement with ChronifyAI</li><li>✅ Updated your institutional privacy policy</li><li>✅ Informed users about external data archiving</li><li>✅ Verified compliance with applicable regulations (GDPR, FERPA, etc.)</li></ul></div>';
-$string['privacy:acknowledge:label'] = 'Data transmission acknowledgment';
-$string['privacy:acknowledge:description'] = 'I acknowledge that enabling this plugin will transmit course data, student information, grades, and other data to ChronifyAI\'s external servers. I have reviewed applicable data protection regulations and have appropriate agreements in place.';
-$string['privacy:acknowledge:required'] = 'You must acknowledge the data transmission terms before enabling the plugin.';
-$string['privacy:datasent:log'] = 'Data transmission to ChronifyAI: {$a}';
-$string['privacy:setup:warning'] = '⚠️ <strong>Privacy Notice:</strong> When enabled, this plugin will transmit course content, student data, grades, and other information to ChronifyAI\'s external servers.';
-$string['privacy:setup:requirements'] = 'Before enabling, ensure you have:<ul><li>Reviewed the privacy documentation (PRIVACY.md)</li><li>Consulted with your legal/compliance team</li><li>Executed data processing agreements with ChronifyAI</li><li>Updated your institutional privacy policy</li><li>Documented legal basis for data processing</li></ul>';
-$string['acknowledge_data_transmission'] = 'I acknowledge external data transmission';
-$string['acknowledge_data_transmission_desc'] = 'I understand that enabling this plugin will transmit course data, student information, grades, and other data to ChronifyAI\'s external servers. I have reviewed applicable data protection regulations and have appropriate agreements in place.';
-$string['error:must_acknowledge'] = 'You must acknowledge the data transmission requirements before enabling the plugin.';
-
-// Wizard interface strings (Issue #6).
-
-// Settings page strings (Issue #6).
-
-// Privacy and compliance strings (Issue #6).
-
-// UI component strings (Issue #6).
-
-// Error messages (Issue #6).
-$string['error:invalidurl'] = 'Invalid URL format. Please enter a valid HTTP or HTTPS URL.';
-
-// Status messages (Issue #6).
-
-// Instructor-related strings (Issue #4).
-$string['instructor:unknown'] = 'Unknown';
-
-// Task: Restore course strings (Issue #4).
-$string['task:restore:lockobtained'] = 'Obtained lock for restore operation';
-$string['task:restore:tempdircreated'] = 'Created temporary directory for backup file';
-$string['task:restore:downloading'] = 'Downloading backup file from ChronifyAI...';
-$string['task:restore:downloaded'] = 'Backup file downloaded successfully';
-$string['task:restore:filesize'] = 'File size: {$a}';
-$string['task:restore:preparingoptions'] = 'Preparing and validating restore options...';
-$string['task:restore:initializing'] = 'Initializing restore process...';
-$string['task:restore:backupcleanup'] = 'Temporary backup file cleaned up';
-$string['task:restore:errorcleanup'] = 'Temporary file cleaned up after error';
-$string['task:restore:lockreleased'] = 'Course restore lock released';
-
-// Task: Backup and upload strings (Issue #4).
-$string['task:backup:tempcleanup'] = 'Temporary backup file cleaned up';
-$string['task:backup:storedcleanup'] = 'Stored backup file cleaned up';
-$string['task:backup:errorcleanup'] = 'Temporary file cleaned up after error';
-
-// Service: Course restore strings (Issue #4).
-$string['service:restore:nameswarning'] = 'Warning: Could not update course names - keeping temporary names';
-$string['service:restore:warningsignored'] = 'Restore warnings (ignored): {$a}';
-$string['service:restore:continuingdespitewarnings'] = 'Continuing restore despite warnings...';
-$string['service:restore:errorsmessage'] = 'Errors: {$a}';
-
-// Task: Generate and upload report strings (Issue #4).
-$string['task:report:unexpectedformat'] = 'Unexpected response format';
-$string['task:report:unexpectederror'] = 'Unexpected error during report upload: {$a}';
-
-// Restore task error messages (for field validation).
-$string['error:restore:missingcourseid'] = 'Course ID is required for restore operation';
-$string['error:restore:missingbackupid'] = 'Backup ID is required for restore operation';
-$string['error:restore:missingexternaluserid'] = 'External user ID is required for restore operation';
-
-// Missing strings from Issue #6.
-// Notification messages.
-$string['notification:course:restore:failed:message:withname'] = 'Course restore failed for {$a}';
-
-// API/Request errors.
-$string['invalidattachment'] = 'Invalid attachment format';
-$string['retryauthfailed'] = 'Authentication retry failed';
-$string['sso_request_failed'] = 'SSO authentication request failed';
-$string['sso_max_retries'] = 'Maximum SSO retry attempts exceeded';
-
-// UI buttons.
-
-// Configuration validation errors.
-$string['error_missing_api_url'] = 'API base URL is required';
-$string['error_invalid_api_url'] = 'Invalid API base URL format';
-$string['error_missing_email'] = 'Email address is required';
-$string['error_invalid_email'] = 'Invalid email address format';
-
-// Cache definitions.
-$string['cachedef_apitoken'] = 'ChronifyAI API authentication tokens';
-
-// Plugin status.
-$string['status:plugin:disabled'] = 'Plugin is currently disabled';
-
-// Connection test strings.
-
-// Connection test strings (Issue #4 - proper getString() implementation).
+$string['wizard:step5:title'] = 'You\'re All Set!';

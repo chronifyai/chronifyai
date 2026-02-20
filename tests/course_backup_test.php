@@ -42,7 +42,7 @@ use moodle_exception;
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  * @coversDefaultClass \local_chronifyai\local\service\course_backup
  */
-class course_backup_test extends advanced_testcase {
+final class course_backup_test extends advanced_testcase {
     /**
      * @var course_backup
      */
@@ -52,6 +52,7 @@ class course_backup_test extends advanced_testcase {
      * Set up before each test
      */
     protected function setUp(): void {
+        parent::setUp();
         global $CFG;
         $this->resetAfterTest();
         require_once($CFG->dirroot . '/backup/util/includes/backup_includes.php');
