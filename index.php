@@ -236,8 +236,6 @@ switch ($step) {
         $stepdata = [
             'step_title' => get_string('wizard:step5:title', 'local_chronifyai'),
             'dashboard_url' => get_string('wizard:dashboard:url', 'local_chronifyai'),
-            'settings_url' => new moodle_url('/admin/settings.php', ['section' => 'local_chronifyai']),
-            'previous_url' => $stepurls['step4_url']->out(),
         ];
         $content = $OUTPUT->render_from_template('local_chronifyai/wizard_step5', $stepdata);
         break;
